@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --secondary: #64748b;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --light-bg: #eef2f7;
+  --border: #e2e8f0;
+}
+
+* {
+  @apply box-border;
+}
+
+body {
+  @apply bg-light-bg text-slate-900;
+  background-image:
+    radial-gradient(1100px 320px at 85% -60px, rgba(79, 70, 229, 0.14), transparent 60%),
+    radial-gradient(900px 300px at -10% 0%, rgba(245, 158, 11, 0.1), transparent 55%),
+    linear-gradient(180deg, #f8faff 0%, #eef2f7 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+a {
+  @apply text-primary hover:text-primary-dark;
+}
+
+button {
+  @apply transition-all duration-200;
+}
+
+/* Layout helpers */
+.app-main {
+  background-image:
+    radial-gradient(700px 220px at 90% 0%, rgba(79, 70, 229, 0.08), transparent 60%);
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4;
+}
+
+/* Page hero header */
+.page-hero {
+  @apply relative overflow-hidden rounded-2xl text-white shadow-pop;
+  background: linear-gradient(120deg, #1e1b4b 0%, #4338ca 45%, #6d28d9 75%, #b45309 130%);
+}
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(420px 200px at 88% 10%, rgba(255, 255, 255, 0.22), transparent 60%),
+    radial-gradient(500px 260px at 8% 110%, rgba(245, 158, 11, 0.35), transparent 60%);
+  pointer-events: none;
+}
+.page-hero-inner {
+  @apply relative z-10 p-6 md:p-8;
+}
+
+/* Form styles */
+input,
+textarea,
+select {
+  @apply w-full px-3 py-2 bg-white border border-border rounded-xl text-slate-900 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary placeholder:text-slate-400;
+}
+
+label {
+  @apply text-slate-700;
+}
+
+textarea {
+  @apply resize-y;
+}
+
+/* Card component */
+.card {
+  @apply bg-white rounded-2xl shadow-card border border-slate-100 p-6;
+}
+
+.card-hover {
+  @apply transition-all duration-200 hover:-translate-y-0.5 hover:shadow-pop;
+}
+
+/* Button variants */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-semibold transition-all no-underline;
+}
+.btn:active {
+  @apply scale-[0.98];
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-pop hover:from-indigo-700 hover:to-violet-700;
+}
+
+.btn-secondary {
+  @apply bg-white text-slate-700 border border-slate-200 shadow-sm hover:bg-slate-50 hover:border-slate-300;
+}
+
+.btn-danger {
+  @apply bg-error text-white hover:bg-red-600;
+}
+
+.btn-small {
+  @apply px-3 py-1.5 text-sm rounded-lg;
+}
+
+/* Sidebar nav */
+.side-link {
+  @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13.5px] font-medium text-slate-300 hover:text-white hover:bg-white/10 transition-all no-underline;
+}
+.side-link-active {
+  @apply bg-gradient-to-r from-indigo-500 to-violet-500 text-white shadow-pop;
+}
+
+/* Chips + badges */
+.chip {
+  @apply inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full;
+}
+
+/* Subject gradient tiles */
+.subject-tile {
+  @apply flex items-center justify-center w-12 h-12 rounded-2xl text-white shadow-pop shrink-0;
+}
+
+/* Tables (print docs keep their own look) */
+.doc-table th {
+  @apply bg-slate-900 text-white;
+}
+
+/* Loading shimmer */
+.loading-dots::after {
+  content: '…';
+  animation: dots 1.2s steps(4) infinite;
+}
+@keyframes dots {
+  0% { content: ''; }
+  33% { content: '.'; }
+  66% { content: '..'; }
+  100% { content: '...'; }
+}
+
+/* ===== Print styles (schemes of work & lesson plans) ===== */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 10mm;
+  }
+  aside,
+  .no-print {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  body {
+    background: white !important;
+    background-image: none !important;
+  }
+  .page-hero,
+  .app-main {
+    background: none !important;
+  }
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #333;
+  }
+  .print-doc {
+    font-size: 10pt;
+  }
+  .page-break {
+    page-break-after: always;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th,
+  td {
+    border: 1px solid #333 !important;
+    padding: 4px 6px !important;
+    vertical-align: top;
+    font-size: 9pt;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr {
+    page-break-inside: avoid;
+  }
+}
+
+
+/* ===== Print styles (schemes of work & lesson plans) ===== */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 10mm;
+  }
+  aside,
+  .no-print {
+    display: none !important;
+  }
+  main {
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+  body {
+    background: white !important;
+  }
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #333;
+  }
+  .print-doc {
+    font-size: 10pt;
+  }
+  .page-break {
+    page-break-after: always;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th,
+  td {
+    border: 1px solid #333 !important;
+    padding: 4px 6px !important;
+    vertical-align: top;
+    font-size: 9pt;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr {
+    page-break-inside: avoid;
+  }
+}
+

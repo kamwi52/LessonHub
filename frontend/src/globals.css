@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --secondary: #64748b;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --light-bg: #f8fafc;
+  --border: #e2e8f0;
+}
+
+* {
+  @apply box-border;
+}
+
+body {
+  @apply bg-light-bg text-gray-900;
+}
+
+a {
+  @apply text-primary hover:text-primary-dark;
+}
+
+button {
+  @apply transition-colors duration-200;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4;
+}
+
+/* Form styles */
+input,
+textarea,
+select {
+  @apply w-full px-3 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary;
+}
+
+textarea {
+  @apply resize-y;
+}
+
+/* Card component */
+.card {
+  @apply bg-white rounded-lg shadow p-6;
+}
+
+/* Button variants */
+.btn {
+  @apply px-4 py-2 rounded-lg font-medium transition-colors;
+}
+
+.btn-primary {
+  @apply bg-primary text-white hover:bg-primary-dark;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 text-gray-900 hover:bg-gray-300;
+}
+
+.btn-danger {
+  @apply bg-error text-white hover:bg-red-600;
+}
+
+.btn-small {
+  @apply px-2 py-1 text-sm;
+}

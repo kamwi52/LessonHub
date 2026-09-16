@@ -1,0 +1,25 @@
+{
+  "name": "lessonshub",
+  "version": "0.1.0",
+  "description": "Digital Lesson Plan & Scheme of Work System",
+  "private": true,
+  "scripts": {
+    "dev": "start-all.bat",
+    "dev:docker": "docker-compose up --build",
+    "dev:down": "docker-compose down",
+    "dev:logs": "docker-compose logs -f",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "db:reset": "docker-compose down -v && docker-compose up postgres",
+    "local:backend": "cd backend && npm run dev",
+    "local:frontend": "cd frontend && npm run dev",
+    "local:setup": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "test": "npm run test:backend && npm run test:frontend",
+    "test:backend": "cd backend && npm test",
+    "test:frontend": "cd frontend && npm test"
+  },
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}
