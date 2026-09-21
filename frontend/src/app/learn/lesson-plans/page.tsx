@@ -39,53 +39,90 @@ function LessonPlansPageInner() {
   if (!hasHydrated) { return <div>Loading...</div>; }
   if (!user) { router.push('/login'); return <div>Redirecting...</div>; }
 
+  const printAll = () => {
+    // Print everything currently mounted (all 13 weeks). window.print() must
+    // run synchronously inside the click's user gesture — Chrome ignores it
+    // from timers/timeouts (blank preview).
+    // All weeks are always in the DOM (hidden with CSS when filtered); no
+    // state change needed before printing.
+    window.print();
+  };
+
   const printWeek = (w: number) => {
-    setOpenWeek(w);
-    setTimeout(() => { window.print(); setOpenWeek(null); }, 100);
+    // Print ONE week without unmounting anything: tag the target node
+    // synchronously in the click handler, then call window.print() in the
+    // SAME gesture. The print stylesheet below hides every non-target week,
+    // so Chrome snapshots exactly one week. (Earlier code setState-then-print:
+    // React hadn't re-rendered yet, so the preview captured the wrong DOM and
+    // came out blank. Never call window.print() from a timer/effect.)
+    try {
+      document.body.classList.add('print-single-week');
+      document.querySelectorAll('[data-printable][id^="printable-week-"]').forEach((el) => {
+        el.classList.toggle('print-target', el.id === `printable-week-${w}`);
+      });
+    } catch { /* non-browser env */ }
+    const cleanup = () => {
+      try {
+        document.body.classList.remove('print-single-week');
+        document.querySelectorAll('.print-target').forEach((el) => el.classList.remove('print-target'));
+      } catch { /* ignore */ }
+      window.removeEventListener('afterprint', cleanup);
+    };
+    window.addEventListener('afterprint', cleanup);
+    window.print();
+    // Safety net if afterprint never fires: restore screen classes without
+    // touching React state (state changes would re-render mid-preview).
+    setTimeout(() => {
+      try {
+        if (document.body.classList.contains('print-single-week')) cleanup();
+      } catch { /* ignore */ }
+    }, 60000);
   };
 
   return (
     <div className="space-y-5">
-      <PageHero
-        eyebrow="Printable Documents"
-        title={<span className="flex items-center gap-3"><SubjectTile id={subjectId} size={24} />Lesson Plans</span>}
-        description={(SUBJECTS.find((s) => s.id === subjectId)?.name ?? 'Subject') + ' · Term 3 weekly plans in Linda format. Set the teacher and start date, then print one week or all.'}
-        actions={
-          <button className="btn btn-small bg-amber-400 text-slate-900 hover:bg-amber-300 font-extrabold" onClick={() => window.print()}>
-            <Printer size={14} /> Print All
-          </button>
-        }
-      />
-      <SubjectTabs current={subjectId} />
+      {/* Screen chrome — hidden when printing */}
+      <div className="no-print">
+        <PageHero
+          eyebrow="Printable Documents"
+          title={<span className="flex items-center gap-3"><SubjectTile id={subjectId} size={24} />Lesson Plans</span>}
+          description={(SUBJECTS.find((s) => s.id === subjectId)?.name ?? 'Subject') + ' · Term 3 weekly plans in Linda format. Set the teacher and start date, then print one week or all.'}
+          actions={
+            <button className="btn btn-small bg-amber-400 text-slate-900 hover:bg-amber-300 font-extrabold" onClick={printAll}>
+              <Printer size={14} /> Print All Plans
+            </button>
+          }
+        />
+        <SubjectTabs current={subjectId} />
 
-      <div className="no-print card !p-5 flex flex-wrap gap-4 items-end">
-        <div className="w-40">
-          <label className="block text-xs font-bold uppercase tracking-wider mb-1.5">Class</label>
-          <select value={grade?.id ?? ''} onChange={(e) => setGradeId(e.target.value)}>
-            {forms.map((g) => <option key={g.id} value={g.id}>{g.grade}</option>)}
-          </select>
+        <div className="card !p-5 flex flex-wrap gap-4 items-end">
+          <div className="w-40">
+            <label className="block text-xs font-bold uppercase tracking-wider mb-1.5">Class</label>
+            <select value={grade?.id ?? ''} onChange={(e) => setGradeId(e.target.value)}>
+              {forms.map((g) => <option key={g.id} value={g.id}>{g.grade}</option>)}
+            </select>
+          </div>
+          <div className="w-56">
+            <label className="block text-xs font-bold uppercase tracking-wider mb-1.5">Teacher</label>
+            <input value={teacher} onChange={(e) => setTeacher(e.target.value)} />
+          </div>
+          <div className="w-44">
+            <label className="block text-xs font-bold uppercase tracking-wider mb-1.5">Date (first lesson)</label>
+            <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+          </div>
+          <div className="flex-1" />
+          <span className="chip bg-indigo-50 text-indigo-700 border border-indigo-100"><PenLine size={13} /> {weeks.length} plans</span>
         </div>
-        <div className="w-56">
-          <label className="block text-xs font-bold uppercase tracking-wider mb-1.5">Teacher</label>
-          <input value={teacher} onChange={(e) => setTeacher(e.target.value)} />
-        </div>
-        <div className="w-44">
-          <label className="block text-xs font-bold uppercase tracking-wider mb-1.5">Date (first lesson)</label>
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-        </div>
-        <div className="flex-1" />
-        <span className="chip bg-indigo-50 text-indigo-700 border border-indigo-100"><PenLine size={13} /> {weeks.length} plans</span>
       </div>
 
       {weeks.map((w) => {
         const doc = buildLessonPlan(subjectId, grade?.id ?? gradeId, term?.id ?? '', w, grade?.grade ?? '');
         const weekDate = date
           ? new Date(new Date(date).getTime() + (w.week - 1) * 7 * 86400000).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })
-          : '__/__/____';
-        const shown = openWeek === null || openWeek === w.week;
-        if (!shown) return null;
-        return (
-          <div key={w.week} className={`print-doc bg-white p-8 rounded-lg shadow ${openWeek === w.week ? '' : 'page-break'}`}>
+          : "__/__/____";
+                  return (
+                  <div key={w.week} id={"printable-week-" + w.week} data-printable className={`print-doc bg-white p-8 rounded-lg shadow ${openWeek !== null && openWeek !== w.week ? "hidden-on-filter" : ""}
+            ${openWeek === w.week ? "" : "page-break"}`}>
             <div className="text-center mb-4">
               <h1 className="text-base font-bold">{SCHOOL_NAME}</h1>
               <h2 className="text-sm font-bold">LESSON PLAN{w.week === 7 || w.week === 13 ? ' (EXAM WEEK)' : ''}</h2>
@@ -133,7 +170,7 @@ function LessonPlansPageInner() {
                 ))}
               </tbody>
             </table>
-            <div className="no-print flex gap-2 justify-end">
+            <div className="flex gap-2 justify-end">
               <button className="btn btn-small btn-secondary" onClick={() => setOpenWeek(openWeek === w.week ? null : w.week)}>
                 {openWeek === w.week ? 'Show all weeks' : 'Show only this week'}
               </button>

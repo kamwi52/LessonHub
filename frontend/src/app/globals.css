@@ -146,101 +146,56 @@ textarea {
   100% { content: '...'; }
 }
 
-/* ===== Print styles (schemes of work & lesson plans) ===== */
+/* ===== Print styles (schemes of work, lesson plans & topic pages) ===== */
+.hidden-on-filter { display: none; }
 @media print {
   @page {
     size: A4 landscape;
     margin: 10mm;
   }
-  aside,
-  .no-print {
+
+  /* ------------------------------------------------------------------
+     Print — keep this MINIMAL. Chrome's headed print preview can show a
+     blank sheet when `!important` rules on structural wrappers (html, body,
+     main heights/overflows/flex) fight the print rasteriser, so only hide
+     on-screen chrome and let the layout flow. Document styling lives in
+     the components (`.doc-table`, `.doc-h1`, …), not here.
+     ------------------------------------------------------------------ */
+  .print-shell aside,
+  .print-shell .no-print {
     display: none !important;
   }
-  main {
-    padding: 0 !important;
-    overflow: visible !important;
-  }
-  body {
-    background: white !important;
-    background-image: none !important;
-  }
-  .page-hero,
-  .app-main {
-    background: none !important;
-  }
-  .card {
-    box-shadow: none !important;
-    border: 1px solid #333;
-  }
-  .print-doc {
-    font-size: 10pt;
-  }
-  .page-break {
-    page-break-after: always;
-  }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  th,
-  td {
-    border: 1px solid #333 !important;
-    padding: 4px 6px !important;
-    vertical-align: top;
-    font-size: 9pt;
-  }
-  thead {
-    display: table-header-group;
-  }
-  tr {
-    page-break-inside: avoid;
-  }
-}
 
-
-/* ===== Print styles (schemes of work & lesson plans) ===== */
-@media print {
-  @page {
-    size: A4 landscape;
-    margin: 10mm;
-  }
-  aside,
-  .no-print {
-    display: none !important;
-  }
-  main {
-    padding: 0 !important;
+  /* Let the <main> scroll container grow to its full content height instead
+     of clipping everything past its first page. Padding removed; the @page
+     margin provides the paper margin. */
+  .print-main {
     overflow: visible !important;
+    padding: 0 !important;
   }
+
   body {
     background: white !important;
   }
-  .card {
-    box-shadow: none !important;
-    border: 1px solid #333;
-  }
+
   .print-doc {
     font-size: 10pt;
   }
+
   .page-break {
     page-break-after: always;
   }
-  table {
-    border-collapse: collapse;
-    width: 100%;
+
+  /* Single-week printing without unmounting: when the click handler tags the
+     target (see printWeek in lesson-plans/page.tsx), hide every OTHER week so
+     the preview snapshots exactly one week. DOM-based (not state-based) so the
+     snapshot happens in the same user gesture — no blank intermediate render. */
+  body.print-single-week [data-printable][id^='printable-week-']:not(.print-target) {
+    display: none !important;
   }
-  th,
-  td {
-    border: 1px solid #333 !important;
-    padding: 4px 6px !important;
-    vertical-align: top;
-    font-size: 9pt;
-  }
-  thead {
-    display: table-header-group;
-  }
-  tr {
-    page-break-inside: avoid;
+  body.print-single-week .print-target {
+    page-break-after: avoid;
   }
 }
+
 

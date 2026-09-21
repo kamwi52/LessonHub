@@ -227,3 +227,64 @@ For issues or questions, refer to the PRODUCT_SPECIFICATION.md for context on th
 ## License
 
 TBD
+
+---
+
+## Deploy to Vercel (Frontend)
+
+This project's frontend (Next.js) is ready for Vercel deployment. The backend is a separate Express server that needs its own hosting.
+
+### Frontend Deployment (Vercel)
+
+1. **Push to GitHub** - Commit and push your code
+2. **Import in Vercel** - Go to [vercel.com](https://vercel.com), click "Add New Project", select your repo
+3. **Configure Environment Variables** in Vercel dashboard:
+   ```
+   NEXT_PUBLIC_API_URL=https://your-backend-api-url.com
+   ```
+   (This should point to your deployed backend)
+4. **Deploy** - Vercel auto-detects Next.js and builds automatically
+
+Or deploy from CLI:
+```bash
+cd frontend
+vercel --prod
+```
+
+### Backend Deployment (Separate Service)
+
+The backend uses Express with PostgreSQL - deploy it on:
+
+- **Render** (render.com) - Easy Node.js + PostgreSQL hosting
+- **Railway** (railway.app)
+- **Fly.io**
+- Any VPS with Node.js + PostgreSQL
+
+Backend requirements:
+- Node.js 18+
+- PostgreSQL database
+- Environment variables: `DATABASE_URL`, `JWT_SECRET`, `PORT`
+
+### Connecting Frontend to Backend
+
+Once both are deployed:
+1. Get your backend URL (e.g., `https://api.yourapp.onrender.com`)
+2. Set `NEXT_PUBLIC_API_URL` to that URL in Vercel's environment variables
+3. Redeploy frontend
+
+### Local Development
+
+```bash
+# Start everything locally
+npm run dev
+
+# Frontend: http://localhost:3000
+# Backend:  http://localhost:3001
+# PostgreSQL: localhost:5432
+
+# Login credentials (password for all): devpass123
+# - teacher1@devschool.local
+# - teacher2@devschool.local
+# - coordinator@devschool.local
+# - admin@devschool.local
+```

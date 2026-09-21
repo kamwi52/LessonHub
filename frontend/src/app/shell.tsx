@@ -46,7 +46,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen print-shell">
       {user && (
         <>
           {sidebarOpen && (
@@ -54,7 +54,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           )}
           <aside
             className={
-              'z-30 flex flex-col shrink-0 transition-all duration-300 max-md:fixed max-md:inset-y-0 max-md:left-0 ' +
+              'no-print z-30 flex flex-col shrink-0 transition-all duration-300 max-md:fixed max-md:inset-y-0 max-md:left-0 ' +
               (sidebarOpen ? 'w-64 max-md:translate-x-0' : 'w-20 max-md:-translate-x-full')
             }
             style={{
@@ -142,7 +142,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           </aside>
         </>
       )}
-      <main className="flex-1 overflow-auto app-main min-w-0">
+      <main className="flex-1 overflow-auto app-main min-w-0 print-main">
         {user ? (
           <div className="p-4 md:p-8 max-w-6xl mx-auto w-full">{children}</div>
         ) : (
