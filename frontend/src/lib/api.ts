@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosError } from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+const API_URL = ''; // API routes are now in the same Next.js app
 
 class ApiClient {
   private client: AxiosInstance;

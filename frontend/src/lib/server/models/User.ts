@@ -1,4 +1,4 @@
-import { query } from '../config/database';
+import { query } from '@/lib/server/database';
 
 export interface User {
   id: number;

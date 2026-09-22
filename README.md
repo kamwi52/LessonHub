@@ -4,16 +4,16 @@ A comprehensive web application for teachers to create, organize, and share less
 
 ## Tech Stack
 
-- **Frontend:** Next.js 14+ (React), TypeScript, Tailwind CSS
-- **Backend:** Node.js, Express, TypeScript
+- **Frontend & API:** Next.js 14+ (React), TypeScript, Tailwind CSS
+- **API Routes:** Next.js API Routes (Serverless Functions)
 - **Database:** PostgreSQL 15
-- **DevOps:** Docker, Docker Compose
+- **Deployment:** Vercel (single platform)
 
 ## Prerequisites
 
-- Docker & Docker Compose
 - Node.js 18+ (for local development)
 - Git
+- PostgreSQL database (local or managed like Neon/Supabase)
 
 ## Quick Start
 
@@ -23,64 +23,50 @@ A comprehensive web application for teachers to create, organize, and share less
 # Copy environment variables
 cp .env.example .env
 
-# Install root dependencies
+# Install dependencies
+cd frontend
 npm install
 ```
 
 ### 2. Start Development Environment
 
 ```bash
-# Start all services (PostgreSQL, Backend, Frontend)
+# Start the app (frontend + API + database connection)
 npm run dev
 
-# Frontend will be at: http://localhost:3000
-# Backend API at: http://localhost:3001
+# App will be at: http://localhost:3000
+# API routes at: http://localhost:3000/api/*
 ```
 
 ### 3. View Logs
 
 ```bash
-# Watch all service logs
-npm run dev:logs
-
-# Or logs for specific service
-docker-compose logs -f frontend
-docker-compose logs -f backend
-docker-compose logs -f postgres
+# Frontend logs are shown in the terminal
+# For database logs, check your PostgreSQL provider's dashboard
 ```
 
 ## Project Structure
 
 ```
 LessonsHub/
-├── frontend/                 # Next.js web application
+├── frontend/                 # Next.js web application + API routes
 │   ├── src/
-│   │   ├── app/             # Next.js app directory
-│   │   ├── components/      # Reusable React components
-│   │   ├── lib/             # Utilities and API clients
-│   │   ├── styles/          # Global styles
-│   │   └── types/           # TypeScript types
-│   ├── package.json
-│   └── Dockerfile.dev       # Development Docker image
-│
-├── backend/                 # Express.js API server
-│   ├── src/
-│   │   ├── routes/          # API endpoints
-│   │   ├── models/          # Database models & queries
-│   │   ├── middleware/      # Express middleware
-│   │   ├── utils/           # Helper functions
-│   │   ├── config/          # Configuration
-│   │   └── server.ts        # Express server setup
-│   ├── package.json
-│   └── Dockerfile           # Production Docker image
-│
-├── database/                # Database initialization & migrations
-│   ├── init.sql             # Initial schema
-│   └── migrations/          # Migration scripts
-│
-├── docker-compose.yml       # Orchestrates all services
-├── .env.example             # Environment template
-└── PRODUCT_SPECIFICATION.md # Product requirements doc
+│   │   ├── app/
+│   │   │   ├── api/         # API routes (replaces Express backend)
+│   │   │   │   ├── auth/    # Authentication endpoints
+│   │   │   │   ├── plans/   # Plan management endpoints
+│   │   │   │   └── users/   # User endpoints
+│   │   │   ├── components/  # Reusable React components
+│   │   │   ├── lib/         # Utilities and API clients
+│   │   │   │   └── server/  # Server-side utilities (DB, JWT, auth)
+│   │   │   ├── styles/      # Global styles
+│   │   │   └── types/       # TypeScript types
+│   │   ├── package.json
+│   │   └── next.config.js
+│   │
+├── .env.example              # Environment template
+├── vercel.json               # Vercel deployment config
+└── PRODUCT_SPECIFICATION.md  # Product requirements doc
 ```
 
 ## Development Workflow

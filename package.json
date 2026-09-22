@@ -1,29 +1,16 @@
 {
   "name": "lessonshub",
   "version": "0.1.0",
-  "description": "Digital Lesson Plan & Scheme of Work System",
   "private": true,
   "scripts": {
-    "dev": "start-all.bat",
-    "dev:docker": "docker-compose up --build",
-    "dev:down": "docker-compose down",
-    "dev:logs": "docker-compose logs -f",
-    "dev:backend": "cd backend && npm run dev",
-    "dev:frontend": "cd frontend && npm run dev",
-    "db:reset": "docker-compose down -v && docker-compose up postgres",
-    "local:backend": "cd backend && npm run dev",
-    "local:frontend": "cd frontend && npm run dev",
-    "local:setup": "npm install && cd backend && npm install && cd ../frontend && npm install",
-    "deploy:frontend": "cd frontend && vercel --prod",
-    "deploy:backend": "cd backend && npm run build && npm start",
-    "test": "npm run test:backend && npm run test:frontend",
-    "test:backend": "cd backend && npm test",
-    "test:frontend": "cd frontend && npm test"
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "start": "cd frontend && npm run start",
+    "install:all": "cd frontend && npm install",
+    "db:reset": "cd frontend && npm run db:reset",
+    "deploy": "cd frontend && vercel --prod",
+    "test": "cd frontend && npm run test"
   },
-  "workspaces": [
-    "backend",
-    "frontend"
-  ],
   "dependencies": {},
   "devDependencies": {}
 }

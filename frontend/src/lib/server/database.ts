@@ -1,5 +1,6 @@
 import { Pool } from 'pg';
 
+// Create a singleton pool instance
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   max: 20,
