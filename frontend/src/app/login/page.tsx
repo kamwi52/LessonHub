@@ -99,10 +99,8 @@ export default function LoginPage() {
         </div>
 
         <p className="mt-6 text-center text-sm text-secondary">
-          Don&apos;t have an account?{' '}
-          <Link href="/register" className="text-primary font-bold hover:underline">
-            Register here
-          </Link>
+          Demo credentials:
+          <p className="font-mono text-xs mt-2 bg-slate-100 rounded-lg py-1.5">teacher1@devschool.local / devpass123</p>
         </p>
       </div>
     </div>
