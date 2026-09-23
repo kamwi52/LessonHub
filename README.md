@@ -1,276 +1,158 @@
-# LessonsHub - Digital Lesson Plan & Scheme of Work System
+# LessonsHub
 
-A comprehensive web application for teachers to create, organize, and share lesson plans with built-in curriculum tracking and compliance auditing.
+Digital Lesson Plan & Scheme of Work system for teachers.
 
-## Tech Stack
+**One app, one platform.** The UI and the API live in the same Next.js project,
+so there is a single thing to run, a single thing to deploy, and only three
+environment variables.
 
-- **Frontend & API:** Next.js 14+ (React), TypeScript, Tailwind CSS
-- **API Routes:** Next.js API Routes (Serverless Functions)
-- **Database:** PostgreSQL 15
-- **Deployment:** Vercel (single platform)
+- **App + API:** Next.js 14 (React, TypeScript, Tailwind)
+- **Database:** PostgreSQL (Supabase)
+- **Hosting:** Vercel
 
-## Prerequisites
+---
 
-- Node.js 18+ (for local development)
-- Git
-- PostgreSQL database (local or managed like Neon/Supabase)
-
-## Quick Start
-
-### 1. Clone and Setup
+## Quick start
 
 ```bash
-# Copy environment variables
-cp .env.example .env
-
-# Install dependencies
-cd frontend
-npm install
+npm run install:all                    # install dependencies
+cp .env.example frontend/.env.local    # then edit frontend/.env.local
+npm run dev                            # http://localhost:3000
 ```
 
-### 2. Start Development Environment
+The API is served from the same origin at `/api/*` — there is no second server,
+no CORS setup, and no API URL to configure.
+
+### Environment variables
+
+Only three, read from `frontend/.env.local` locally and from
+**Vercel → Settings → Environment Variables** in production:
+
+| Variable | Notes |
+| --- | --- |
+| `DATABASE_URL` | Postgres connection string. See the Supabase note below. |
+| `JWT_SECRET` | Any long random string: `node -e "console.log(require('crypto').randomBytes(48).toString('base64'))"` |
+| `JWT_EXPIRY` | e.g. `7d` |
+
+### ⚠️ Supabase: use the pooler host, not `db.<ref>.supabase.co`
+
+`db.<your-ref>.supabase.co` has an **IPv6-only** DNS record. Vercel's servers
+are IPv4-only, so the connection hangs and every API call returns
+`500 Internal Server Error`.
+
+Use the **Connection Pooler** string instead (Supabase → **Connect** → Transaction pooler):
+
+```
+postgresql://postgres.<project-ref>:<URL-ENCODED-PASSWORD>@aws-1-<region>.pooler.supabase.com:6543/postgres
+```
+
+**URL-encode the password**, otherwise the connection string is misparsed:
+
+| char | `@` | `?` | `#` | `%` | `!` | `+` | `/` | `:` | `&` |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| encode | `%40` | `%3F` | `%23` | `%25` | `%21` | `%2B` | `%2F` | `%3A` | `%26` |
+
+---
+
+## Database setup
+
+Paste [`database/schema.sql`](database/schema.sql) into the Supabase **SQL
+Editor** and press Run. It creates the `users` and `plans` tables, the indexes,
+and four demo accounts:
+
+| Email | Role |
+| --- | --- |
+| `teacher1@devschool.local` | teacher |
+| `teacher2@devschool.local` | teacher |
+| `coordinator@devschool.local` | coordinator |
+| `admin@devschool.local` | admin |
+
+Password for all four: `devpass123`.
+
+The file is idempotent — running it again repairs the demo passwords instead of
+duplicating rows.
+
+### Verify the connection
 
 ```bash
-# Start the app (frontend + API + database connection)
-npm run dev
-
-# App will be at: http://localhost:3000
-# API routes at: http://localhost:3000/api/*
+npm run db:check
 ```
 
-### 3. View Logs
+Read-only. It warns about the IPv6 trap above, checks the tables exist, and
+confirms each demo account can really log in.
+
+---
+
+## Deploy
+
+Push to `master` — Vercel builds automatically once the repo is connected. Or:
 
 ```bash
-# Frontend logs are shown in the terminal
-# For database logs, check your PostgreSQL provider's dashboard
+npm run deploy          # vercel --prod
 ```
 
-## Project Structure
+Set the three environment variables in Vercel and tick **both** Production and
+Preview, or preview deployments will fail.
+
+### If something breaks in production
+
+Open **`https://<your-app>.vercel.app/api/health`**. It reports whether each
+variable is set, whether the database is reachable, and whether the tables
+exist — turning an opaque 500 into a specific message.
+
+---
+
+## Project structure
 
 ```
 LessonsHub/
-├── frontend/                 # Next.js web application + API routes
+├── frontend/                     # the whole application
+│   ├── scripts/db-check.mjs      # npm run db:check
 │   ├── src/
 │   │   ├── app/
-│   │   │   ├── api/         # API routes (replaces Express backend)
-│   │   │   │   ├── auth/    # Authentication endpoints
-│   │   │   │   ├── plans/   # Plan management endpoints
-│   │   │   │   └── users/   # User endpoints
-│   │   │   ├── components/  # Reusable React components
-│   │   │   ├── lib/         # Utilities and API clients
-│   │   │   │   └── server/  # Server-side utilities (DB, JWT, auth)
-│   │   │   ├── styles/      # Global styles
-│   │   │   └── types/       # TypeScript types
-│   │   ├── package.json
-│   │   └── next.config.js
-│   │
-├── .env.example              # Environment template
-├── vercel.json               # Vercel deployment config
-└── PRODUCT_SPECIFICATION.md  # Product requirements doc
+│   │   │   ├── api/              # the API (serverless route handlers)
+│   │   │   │   ├── health/       # diagnostics — start here when debugging
+│   │   │   │   ├── auth/         # login, register
+│   │   │   │   ├── users/        # current user
+│   │   │   │   └── plans/        # list, create, read, update, delete, duplicate
+│   │   │   └── ...               # pages (login, register, dashboard, plans, learn)
+│   │   ├── lib/server/           # server-only: database, jwt, auth, models
+│   │   ├── lib/api.ts            # browser API client
+│   │   └── store/                # zustand state (persisted auth session)
+│   └── package.json
+├── database/schema.sql           # the entire schema + demo data
+└── .env.example
 ```
 
-## Development Workflow
+---
 
-### Local Development (Without Docker)
+## API reference
 
-If you prefer running services locally:
+All endpoints are same-origin and — except health, login and register — require
+an `Authorization: Bearer <token>` header.
 
-```bash
-# Terminal 1: Start PostgreSQL (via Docker)
-docker-compose up postgres
+| Method | Path | Purpose |
+| --- | --- | --- |
+| `GET` | `/api/health` | Deployment diagnostics |
+| `POST` | `/api/auth/register` | Create an account, returns a token |
+| `POST` | `/api/auth/login` | Sign in, returns a token |
+| `GET` | `/api/users/me` | Current user |
+| `GET` | `/api/plans` | Plans for the signed-in teacher (`limit`, `offset`) |
+| `POST` | `/api/plans/create` | Create a plan |
+| `GET` | `/api/plans/[planId]` | One plan |
+| `PUT` | `/api/plans/[planId]` | Update a plan |
+| `DELETE` | `/api/plans/[planId]` | Delete a plan |
+| `POST` | `/api/plans/[planId]/duplicate` | Copy a plan to another term/week |
+| `GET` | `/api/plans/subject` | By subject/grade/term (coordinator, admin) |
 
-# Terminal 2: Start Backend
-cd backend
-npm install
-npm run dev
+---
 
-# Terminal 3: Start Frontend
-cd frontend
-npm install
-npm run dev
-```
+## Removed in the simplification
 
-### Database Migrations
-
-Migrations run automatically on container startup. To manually reset:
-
-```bash
-npm run db:reset
-```
-
-### API Documentation
-
-API endpoints are documented in `backend/API.md` (will be created during development)
-
-## Features (MVP - Phase 1)
-
-- [x] User authentication (JWT-based)
-- [x] Plan creation with structured forms
-- [x] Hierarchical plan organization (School > Subject > Grade > Term)
-- [x] Plan reusability (copy & adapt from past years)
-- [x] Within-school sharing & permissions
-- [x] PDF export
-- [x] Coordinator curriculum mapping dashboard
-- [x] Comments & feedback on plans
-- [x] Role-based access control (Teacher/Coordinator/Admin)
-- [x] Plan versioning & audit trails
-
-## Future Phases
-
-**Phase 2 (0-6 months post-launch):**
-- Advanced search & filtering
-- Template library
-- Bulk plan upload (OCR)
-- Curriculum alignment tagging
-- Cross-school sharing (read-only)
-- Mobile app (read-only)
-
-**Phase 3+ (6+ months):**
-- AI-powered suggestions
-- Lesson delivery integration
-- Student outcome tracking
-- Differentiation assistant
-- SIS integration
-
-## Deployment
-
-### Production Build
-
-```bash
-# Build Docker images for production
-docker-compose -f docker-compose.prod.yml build
-
-# Push to Docker registry (configure accordingly)
-docker push your-registry/lessonshub:latest
-```
-
-### Environment Variables (Production)
-
-Before deploying, update these critical variables:
-
-```
-JWT_SECRET=<strong_random_key>
-DATABASE_URL=<production_postgres_url>
-CORS_ORIGIN=<production_domain>
-NODE_ENV=production
-```
-
-## Testing
-
-```bash
-# Run all tests
-npm test
-
-# Run specific test suite
-npm run test:backend
-npm run test:frontend
-
-# Watch mode
-npm run test:backend -- --watch
-```
-
-## Contributing
-
-1. Create a feature branch: `git checkout -b feature/feature-name`
-2. Commit changes: `git commit -m 'Add feature'`
-3. Push to branch: `git push origin feature/feature-name`
-4. Open a Pull Request
-
-## Troubleshooting
-
-### PostgreSQL Connection Refused
-
-```bash
-# Restart database service
-docker-compose restart postgres
-
-# Or reset completely
-npm run db:reset
-```
-
-### Port Already in Use
-
-```bash
-# Kill process on port 3000 (frontend)
-# Windows: netstat -ano | findstr :3000
-
-# Change ports in docker-compose.yml if needed
-```
-
-### Hot Reload Not Working
-
-```bash
-# Check volume mounts in docker-compose.yml
-# Restart services
-npm run dev:down
-npm run dev
-```
-
-## Support
-
-For issues or questions, refer to the PRODUCT_SPECIFICATION.md for context on the vision and requirements.
+The project previously ran an Express backend plus Postgres in Docker and
+needed two or three hosting accounts. Those are gone: no `backend/`, no
+`docker-compose.yml`, no Docker, no `NEXT_PUBLIC_API_URL`, no CORS setup.
 
 ## License
 
 TBD
-
----
-
-## Deploy to Vercel (Frontend)
-
-This project's frontend (Next.js) is ready for Vercel deployment. The backend is a separate Express server that needs its own hosting.
-
-### Frontend Deployment (Vercel)
-
-1. **Push to GitHub** - Commit and push your code
-2. **Import in Vercel** - Go to [vercel.com](https://vercel.com), click "Add New Project", select your repo
-3. **Configure Environment Variables** in Vercel dashboard:
-   ```
-   NEXT_PUBLIC_API_URL=https://your-backend-api-url.com
-   ```
-   (This should point to your deployed backend)
-4. **Deploy** - Vercel auto-detects Next.js and builds automatically
-
-Or deploy from CLI:
-```bash
-cd frontend
-vercel --prod
-```
-
-### Backend Deployment (Separate Service)
-
-The backend uses Express with PostgreSQL - deploy it on:
-
-- **Render** (render.com) - Easy Node.js + PostgreSQL hosting
-- **Railway** (railway.app)
-- **Fly.io**
-- Any VPS with Node.js + PostgreSQL
-
-Backend requirements:
-- Node.js 18+
-- PostgreSQL database
-- Environment variables: `DATABASE_URL`, `JWT_SECRET`, `PORT`
-
-### Connecting Frontend to Backend
-
-Once both are deployed:
-1. Get your backend URL (e.g., `https://api.yourapp.onrender.com`)
-2. Set `NEXT_PUBLIC_API_URL` to that URL in Vercel's environment variables
-3. Redeploy frontend
-
-### Local Development
-
-```bash
-# Start everything locally
-npm run dev
-
-# Frontend: http://localhost:3000
-# Backend:  http://localhost:3001
-# PostgreSQL: localhost:5432
-
-# Login credentials (password for all): devpass123
-# - teacher1@devschool.local
-# - teacher2@devschool.local
-# - coordinator@devschool.local
-# - admin@devschool.local
-```

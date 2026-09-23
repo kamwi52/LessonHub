@@ -1,23 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // API routes are now at /api/* in the same Next.js app
-  // No need for separate backend server
-  headers: async () => {
-    return [
-      {
-        source: '/api/:path*',
-        headers: [
-          { key: 'Access-Control-Allow-Credentials', value: 'true' },
-          { key: 'Access-Control-Allow-Origin', value: '*' },
-          { key: 'Access-Control-Allow-Methods', value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT' },
-          { key: 'Access-Control-Allow-Headers', value: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization' },
-        ],
-      },
-    ];
-  },
-  // Ensure API routes are bundled with the frontend
-  output: 'standalone',
+  // The UI and the API live in this same project, so all requests are
+  // same-origin. There is no CORS configuration and no API URL to set.
+  // Vercel detects Next.js automatically - no vercel.json is required.
 };
 
 module.exports = nextConfig;

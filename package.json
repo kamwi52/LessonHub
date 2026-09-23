@@ -7,9 +7,9 @@
     "build": "cd frontend && npm run build",
     "start": "cd frontend && npm run start",
     "install:all": "cd frontend && npm install",
-    "db:reset": "cd frontend && npm run db:reset",
-    "deploy": "cd frontend && vercel --prod",
-    "test": "cd frontend && npm run test"
+    "type-check": "cd frontend && npm run type-check",
+    "db:check": "cd frontend && npm run db:check",
+    "deploy": "cd frontend && vercel --prod"
   },
   "dependencies": {},
   "devDependencies": {}
