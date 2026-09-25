@@ -9,7 +9,7 @@ import { PageHero } from '@/components/ui';
 import { SubjectTile } from '@/components/subject-theme';
 import { resolveSubjectId, SUBJECTS } from '@/data/subjects';
 import {
-  SCHOOL_NAME, buildLessonPlan, getForms, getGradeById, getLessonRef, getTerm3,
+  LESSONS_PER_WEEK, SCHOOL_NAME, buildWeekLessonPlans, getForms, getGradeById, getLessonRef, getTerm3,
 } from '@/data/scheme';
 
 export default function LessonPlansPage() {
@@ -40,25 +40,25 @@ function LessonPlansPageInner() {
   if (!user) { router.push('/login'); return <div>Redirecting...</div>; }
 
   const printAll = () => {
-    // Print everything currently mounted (all 13 weeks). window.print() must
-    // run synchronously inside the click's user gesture — Chrome ignores it
-    // from timers/timeouts (blank preview).
-    // All weeks are always in the DOM (hidden with CSS when filtered); no
-    // state change needed before printing.
+    // Print everything currently mounted (all 13 weeks × 2 lessons = 26 plans).
+    // window.print() must run synchronously inside the click's user gesture —
+    // Chrome ignores it from timers/timeouts (blank preview). All plans are
+    // always in the DOM (hidden with CSS when filtered); no state change needed.
     window.print();
   };
 
-  const printWeek = (w: number) => {
-    // Print ONE week without unmounting anything: tag the target node
+  const printLesson = (week: number, lesson: number) => {
+    // Print ONE lesson plan without unmounting anything: tag the target node
     // synchronously in the click handler, then call window.print() in the
-    // SAME gesture. The print stylesheet below hides every non-target week,
-    // so Chrome snapshots exactly one week. (Earlier code setState-then-print:
+    // SAME gesture. The print stylesheet below hides every non-target lesson,
+    // so Chrome snapshots exactly one plan. (Earlier code setState-then-print:
     // React hadn't re-rendered yet, so the preview captured the wrong DOM and
     // came out blank. Never call window.print() from a timer/effect.)
+    const targetId = `printable-week-${week}-lesson-${lesson}`;
     try {
       document.body.classList.add('print-single-week');
       document.querySelectorAll('[data-printable][id^="printable-week-"]').forEach((el) => {
-        el.classList.toggle('print-target', el.id === `printable-week-${w}`);
+        el.classList.toggle('print-target', el.id === targetId);
       });
     } catch { /* non-browser env */ }
     const cleanup = () => {
@@ -86,7 +86,7 @@ function LessonPlansPageInner() {
         <PageHero
           eyebrow="Printable Documents"
           title={<span className="flex items-center gap-3"><SubjectTile id={subjectId} size={24} />Lesson Plans</span>}
-          description={(SUBJECTS.find((s) => s.id === subjectId)?.name ?? 'Subject') + ' · Term 3 weekly plans in Linda format. Set the teacher and start date, then print one week or all.'}
+          description={(SUBJECTS.find((s) => s.id === subjectId)?.name ?? 'Subject') + ` · Term 3 Linda format — ${LESSONS_PER_WEEK} lessons of 80 minutes every week. Set the teacher and start date, then print one lesson or all ${weeks.length * LESSONS_PER_WEEK} plans.`}
           actions={
             <button className="btn btn-small bg-amber-400 text-slate-900 hover:bg-amber-300 font-extrabold" onClick={printAll}>
               <Printer size={14} /> Print All Plans
@@ -107,31 +107,39 @@ function LessonPlansPageInner() {
             <input value={teacher} onChange={(e) => setTeacher(e.target.value)} />
           </div>
           <div className="w-44">
-            <label className="block text-xs font-bold uppercase tracking-wider mb-1.5">Date (first lesson)</label>
+            <label className="block text-xs font-bold uppercase tracking-wider mb-1.5">Date (Lesson 1 of each week)</label>
             <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
           </div>
           <div className="flex-1" />
-          <span className="chip bg-indigo-50 text-indigo-700 border border-indigo-100"><PenLine size={13} /> {weeks.length} plans</span>
+          <span className="chip bg-indigo-50 text-indigo-700 border border-indigo-100"><PenLine size={13} /> {weeks.length} weeks · {weeks.length * LESSONS_PER_WEEK} plans</span>
         </div>
       </div>
 
-      {weeks.map((w) => {
-        const doc = buildLessonPlan(subjectId, grade?.id ?? gradeId, term?.id ?? '', w, grade?.grade ?? '');
-        const weekDate = date
-          ? new Date(new Date(date).getTime() + (w.week - 1) * 7 * 86400000).toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })
-          : "__/__/____";
-                  return (
-                  <div key={w.week} id={"printable-week-" + w.week} data-printable className={`print-doc bg-white p-8 rounded-lg shadow ${openWeek !== null && openWeek !== w.week ? "hidden-on-filter" : ""}
-            ${openWeek === w.week ? "" : "page-break"}`}>
+      {weeks.flatMap((w) =>
+        buildWeekLessonPlans(subjectId, grade?.id ?? gradeId, term?.id ?? '', w, grade?.grade ?? '').map((doc) => {
+          // Lesson 1 falls on the week's start date; Lesson 2 two days later.
+          const lessonDate = date
+            ? new Date(new Date(date).getTime() + (w.week - 1) * 7 * 86400000 + (doc.lesson - 1) * 2 * 86400000)
+                .toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })
+            : "__/__/____";
+          const filtered = openWeek !== null && openWeek !== w.week;
+          const printId = `printable-week-${w.week}-lesson-${doc.lesson}`;
+          return (
+            <div
+              key={printId}
+              id={printId}
+              data-printable
+              className={`print-doc bg-white p-8 rounded-lg shadow ${filtered ? "hidden-on-filter" : ""} ${openWeek === w.week ? "" : "page-break"}`}
+            >
             <div className="text-center mb-4">
               <h1 className="text-base font-bold">{SCHOOL_NAME}</h1>
-              <h2 className="text-sm font-bold">LESSON PLAN{w.week === 7 || w.week === 13 ? ' (EXAM WEEK)' : ''}</h2>
+              <h2 className="text-sm font-bold">LESSON PLAN{doc.type === 'exam' ? ' (EXAM WEEK)' : ''} — LESSON {doc.lesson} OF {doc.lessonsInWeek}</h2>
             </div>
             <div className="grid grid-cols-3 gap-x-6 gap-y-1 text-xs font-semibold uppercase mb-2">
               <span>Teacher: {teacher}</span>
               <span className="text-center">Subject: {doc.subject}</span>
               <span className="text-right">Class: {doc.className}</span>
-              <span>Date: {weekDate}</span>
+              <span>Date: {lessonDate}</span>
               <span className="text-center">Duration: {doc.duration}</span>
               <span className="text-right">Week: {w.week}</span>
             </div>
@@ -174,15 +182,16 @@ function LessonPlansPageInner() {
               <button className="btn btn-small btn-secondary" onClick={() => setOpenWeek(openWeek === w.week ? null : w.week)}>
                 {openWeek === w.week ? 'Show all weeks' : 'Show only this week'}
               </button>
-              <button className="btn btn-small btn-primary" onClick={() => printWeek(w.week)}>
-                🖨️ Print this plan
+              <button className="btn btn-small btn-primary" onClick={() => printLesson(w.week, doc.lesson)}>
+                🖨️ Print this lesson
               </button>
             </div>
             <p className="text-xs mt-3"><strong>Lesson critique:</strong></p>
             <p className="text-xs border-b border-dotted border-gray-400 h-6"></p>
-          </div>
-        );
-      })}
+            </div>
+          );
+        }),
+      )}
     </div>
   );
 }

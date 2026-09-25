@@ -186,10 +186,11 @@ textarea {
     page-break-after: always;
   }
 
-  /* Single-week printing without unmounting: when the click handler tags the
-     target (see printWeek in lesson-plans/page.tsx), hide every OTHER week so
-     the preview snapshots exactly one week. DOM-based (not state-based) so the
-     snapshot happens in the same user gesture — no blank intermediate render. */
+  /* Single-lesson printing without unmounting: when the click handler tags the
+     target (see printLesson in lesson-plans/page.tsx), hide every OTHER lesson
+     plan so the preview snapshots exactly one page. DOM-based (not state-based)
+     so the snapshot happens in the same user gesture — no blank intermediate
+     render. */
   body.print-single-week [data-printable][id^='printable-week-']:not(.print-target) {
     display: none !important;
   }

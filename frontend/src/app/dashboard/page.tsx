@@ -141,7 +141,7 @@ export default function DashboardPage() {
         />
         <ActionCard
           title="Lesson Plans"
-          description="Term 3 weekly plans in printable format."
+          description="Two 80-minute lesson plans per week, printable."
           action="View"
           href="/learn/lesson-plans"
           icon={<PenLine size={22} />}

@@ -4,6 +4,12 @@ import { DEFAULT_SUBJECT_ID, getSubject, getSubjectGrade, getSubjectTerm3 } from
 
 export const SCHOOL_NAME = 'LINDA SECONDARY SCHOOL';
 
+// Linda-format documents: every subject is timetabled as two 80-minute lessons
+// per week, so one weekly plan prints as two lesson plans (Lesson 1 of 2, …).
+export const LESSONS_PER_WEEK = 2;
+export const LESSON_MINUTES = 80;
+export const LESSON_DURATION = `${LESSON_MINUTES} MINUTES`;
+
 // ---- Subject helpers: printed docs stay in step with the subject registry ----
 export function getSubjectName(subjectId: string): string {
   return getSubject(subjectId)?.name ?? 'ICT';
@@ -131,6 +137,10 @@ export interface PlanTable {
 
 export interface LessonPlanDoc {
   week: number;
+  /** 1-based lesson number inside the week (Lesson 1 of 2, Lesson 2 of 2 …). */
+  lesson: number;
+  /** How many lesson plans this week was split into. */
+  lessonsInWeek: number;
   type: WeekPlan['type'];
   className: string;
   subject: string;
@@ -142,14 +152,14 @@ export interface LessonPlanDoc {
   rows: PlanTable[];
 }
 
-/** Build a Linda-format lesson plan document from a weekly plan. */
-export function buildLessonPlan(
-  subjectId: string,
-  gradeId: string,
-  termId: string,
-  w: WeekPlan,
-  className: string,
-): LessonPlanDoc {
+interface PlanHeader {
+  topic: string;
+  subtopic: string;
+  aids: string;
+}
+
+/** Resolve the topic / subtopic / resources printed at the top of a week's plan. */
+function planHeader(subjectId: string, gradeId: string, termId: string, w: WeekPlan): PlanHeader {
   const term = getGradeById(subjectId, gradeId)?.terms.find((t) => t.id === termId);
   const firstRef = (w.focus.split('+')[0] ?? '').trim();
   const parts = codeSegments(firstRef);
@@ -162,7 +172,19 @@ export function buildLessonPlan(
       subtopic = `${t.id.replace(/-/g, '.')} ${t.title}`;
     }
   }
-  const aids = w.resources.join(', ');
+  return { topic, subtopic, aids: w.resources.join(', ') };
+}
+
+/** Build ONE Linda-format lesson plan covering a whole week (single-lesson view). */
+export function buildLessonPlan(
+  subjectId: string,
+  gradeId: string,
+  termId: string,
+  w: WeekPlan,
+  className: string,
+): LessonPlanDoc {
+  const head = planHeader(subjectId, gradeId, termId, w);
+  const aids = head.aids;
   const rows: PlanTable[] = [
     {
       part: 'Intro',
@@ -205,14 +227,110 @@ export function buildLessonPlan(
   ];
   return {
     week: w.week,
+    lesson: 1,
+    lessonsInWeek: 1,
     type: w.type,
     className,
     subject: getSubjectName(subjectId),
-    topic,
-    subtopic,
-    duration: '80 MINUTES',
+    topic: head.topic,
+    subtopic: head.subtopic,
+    duration: LESSON_DURATION,
     objectives: 'PSBAT ' + w.objectives.join('; '),
     aids,
     rows,
   };
+}
+
+/** Split a list into two halves; the first half keeps the extra item when odd. */
+function splitInHalf<T>(items: T[]): [T[], T[]] {
+  const cut = Math.ceil(items.length / 2);
+  return [items.slice(0, cut), items.slice(cut)];
+}
+
+/**
+ * Build the printable lesson plans for ONE week of the term. Every subject is
+ * timetabled as two 80-minute lessons a week, so a weekly plan becomes:
+ *   Lesson 1 — the week's introduction, first-half development and guided practice
+ *   Lesson 2 — a recap, the remaining development, the practical exercise/homework
+ * Exam and revision weeks split the same way, so every week prints two plans.
+ */
+export function buildWeekLessonPlans(
+  subjectId: string,
+  gradeId: string,
+  termId: string,
+  w: WeekPlan,
+  className: string,
+): LessonPlanDoc[] {
+  const head = planHeader(subjectId, gradeId, termId, w);
+  const [objectivesFirst, objectivesSecond] = splitInHalf(w.objectives);
+  const [developmentFirst, developmentSecond] = splitInHalf(w.development);
+  // A one-item list must not leave a lesson with nothing to teach.
+  const objectives1 = objectivesFirst.length ? objectivesFirst : w.objectives;
+  const objectives2 = objectivesSecond.length ? objectivesSecond : objectives1;
+  const development1 = developmentFirst.length ? developmentFirst : w.development;
+  const development2 = developmentSecond.length ? developmentSecond : development1;
+  const guidedPractice = development1[development1.length - 1] ?? w.title;
+  const application = w.homework
+    ? `Practical exercise: ${w.homework}`
+    : w.type === 'exam'
+      ? 'Exam task under timed conditions'
+      : 'Practical exercise applying the lesson content on the computer';
+  const applicationMethod = w.type === 'exam' ? 'Exam supervision' : 'Using the computer';
+
+  const rowsFor = (lesson: number): PlanTable[] => [
+    {
+      part: 'Intro',
+      time: '10 min',
+      content: lesson === 1
+        ? [w.starter, ...objectives1.map((o) => `Objective: ${o}`)]
+        : ['Recap Lesson 1: learners state the key points covered.', ...objectives2.map((o) => `Objective: ${o}`)],
+      methodology: 'QPN',
+      learner: 'Answering questions',
+      refAids: 'Projector, Chalkboard, Internet',
+    },
+    {
+      part: 'Dev',
+      time: '40 min',
+      content: lesson === 1 ? development1 : development2,
+      methodology: 'Demonstration, Lecture, Q/A',
+      learner: 'Answering questions and asking questions',
+      refAids: head.aids,
+    },
+    {
+      part: 'App',
+      time: '20 min',
+      content: lesson === 1 ? [`Guided practice: ${guidedPractice}`] : [application],
+      methodology: applicationMethod,
+      learner: 'Answering questions and consultation',
+      refAids: head.aids,
+    },
+    {
+      part: 'Con',
+      time: '10 min',
+      content: lesson === 1
+        ? ['Checkpoint: learners state one thing they have learnt in Lesson 1.']
+        : [w.plenary],
+      methodology: 'Lecture, Q/A',
+      learner: 'Answering and asking questions',
+      refAids: '',
+    },
+  ];
+
+  return Array.from({ length: LESSONS_PER_WEEK }, (_, i) => {
+    const lesson = i + 1;
+    return {
+      week: w.week,
+      lesson,
+      lessonsInWeek: LESSONS_PER_WEEK,
+      type: w.type,
+      className,
+      subject: getSubjectName(subjectId),
+      topic: head.topic,
+      subtopic: head.subtopic,
+      duration: LESSON_DURATION,
+      objectives: 'PSBAT ' + (lesson === 1 ? objectives1 : objectives2).join('; '),
+      aids: head.aids,
+      rows: rowsFor(lesson),
+    };
+  });
 }

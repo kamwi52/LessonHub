@@ -176,7 +176,7 @@ function WeeklyPlan({ weeks, gradeLabel, termLabel }: { weeks: WeekPlan[]; grade
       </h2>
       <p className="text-sm text-secondary mb-3">
         Weeks 1-6 lessons · Week 7 mid-term exams · Weeks 8-11 lessons · Week 12 revision · Week 13 end-of-year exams.
-        Click a week to see the full lesson plan.
+        Two 80-minute lessons every week — click a week to see the full weekly plan.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {weeks.map((w) => {
