@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosError } from 'axios';
+import { Role } from '@/types';
 
 const API_URL = ''; // API routes are now in the same Next.js app
 
@@ -71,6 +72,8 @@ class ApiClient {
     first_name: string;
     last_name: string;
     school_id: number;
+    /** 'student' or 'teacher'. Defaults to 'teacher' on the server if omitted. */
+    role?: Role;
   }) {
     const response = await this.client.post('/api/auth/register', data);
     if (response.data.access_token) {

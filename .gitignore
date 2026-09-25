@@ -36,3 +36,6 @@ Thumbs.db
 # Docker
 .docker/
 tsconfig.tsbuildinfo
+
+# Syllabus pipeline cache (regenerable: npm run syllabus:fetch / extract / generate)
+/syllabi/

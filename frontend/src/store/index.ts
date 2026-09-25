@@ -54,8 +54,18 @@ interface UIStore {
   toggleSidebar: () => void;
 }
 
+/**
+ * The drawer starts open so the desktop layout paints with navigation visible.
+ *
+ * This must be a constant rather than a `window.matchMedia()` check: the value
+ * is rendered during SSR, where `window` does not exist, so reading it here
+ * would produce different server and client markup and break hydration.
+ * AppShell closes the drawer on phone-sized viewports instead.
+ */
+const SIDEBAR_OPEN_BY_DEFAULT = true;
+
 export const useUIStore = create<UIStore>((set) => ({
-  sidebarOpen: true,
+  sidebarOpen: SIDEBAR_OPEN_BY_DEFAULT,
   setSidebarOpen: (open) => set({ sidebarOpen: open }),
   toggleSidebar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
 }));

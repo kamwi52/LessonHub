@@ -3,15 +3,28 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { GraduationCap, UserPlus, Mail, Lock, AlertCircle, User } from 'lucide-react';
+import { GraduationCap, UserPlus, Mail, Lock, AlertCircle, User, PenLine } from 'lucide-react';
 import { useAuthStore } from '@/store';
 import { apiClient } from '@/lib/api';
+import { Role, SELF_REGISTER_ROLES, ROLE_LABELS } from '@/types';
+
+/** Short blurb shown under each role so the choice is self-explanatory. */
+const ROLE_BLURB: Record<string, string> = {
+  student: 'View schemes and lesson plans',
+  teacher: 'Create and manage your own plans',
+};
+
+const ROLE_ICONS: Record<string, React.ComponentType<{ size?: number | string; className?: string }>> = {
+  student: GraduationCap,
+  teacher: PenLine,
+};
 
 export default function RegisterPage() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState<Role>('teacher');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -35,6 +48,7 @@ export default function RegisterPage() {
         first_name: firstName,
         last_name: lastName,
         school_id: 1,
+        role,
       });
       setUser(response.user);
       router.push('/dashboard');
@@ -133,12 +147,52 @@ export default function RegisterPage() {
             </div>
           </div>
 
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-wider mb-1.5">I am a</label>
+            <div className="grid grid-cols-2 gap-3">
+              {SELF_REGISTER_ROLES.map((r) => {
+                const Icon = ROLE_ICONS[r] ?? User;
+                const selected = role === r;
+                return (
+                  <button
+                    key={r}
+                    type="button"
+                    onClick={() => setRole(r)}
+                    disabled={isLoading}
+                    aria-pressed={selected}
+                    className={
+                      'text-left rounded-2xl border p-3 transition-all disabled:opacity-50 ' +
+                      (selected
+                        ? 'border-indigo-500 bg-indigo-50 ring-2 ring-indigo-500/30'
+                        : 'border-border bg-white hover:border-indigo-300')
+                    }
+                  >
+                    <span className="flex items-center gap-2">
+                      <span
+                        className={
+                          'flex items-center justify-center w-8 h-8 rounded-lg shrink-0 ' +
+                          (selected
+                            ? 'bg-gradient-to-br from-indigo-600 to-violet-600 text-white'
+                            : 'bg-slate-100 text-slate-500')
+                        }
+                      >
+                        <Icon size={16} />
+                      </span>
+                      <span className="block text-[13px] font-bold text-slate-900">{ROLE_LABELS[r]}</span>
+                    </span>
+                    <span className="block mt-2 text-[11.5px] leading-snug text-secondary">{ROLE_BLURB[r]}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           <button
             type="submit"
             disabled={isLoading}
             className="w-full btn btn-primary disabled:opacity-50"
           >
-            <UserPlus size={16} /> {isLoading ? 'Creating account...' : 'Create Account'}
+            <UserPlus size={16} /> {isLoading ? 'Creating account...' : `Create ${ROLE_LABELS[role]} Account`}
           </button>
         </form>
 

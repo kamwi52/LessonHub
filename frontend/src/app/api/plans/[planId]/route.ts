@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { authMiddleware } from '@/lib/server/auth';
+import { authMiddleware, requireRole } from '@/lib/server/auth';
 import { getPlanById, updatePlan, deletePlan } from '@/lib/server/models/Plan';
 
 export async function GET(
@@ -22,8 +22,12 @@ export async function GET(
       return NextResponse.json({ error: 'Plan not found' }, { status: 404 });
     }
 
-    // Check authorization
-    if (!request.user || (plan.teacher_id !== request.user.userId && request.user.role === 'teacher')) {
+    // Visible to the teacher who owns it, plus coordinators and admins.
+    // Everyone else - including students - is refused, otherwise any signed-in
+    // user could read every plan in the school just by walking the ids.
+    const isOwner = plan.teacher_id === request.user.userId;
+    const isPrivileged = request.user.role === 'coordinator' || request.user.role === 'admin';
+    if (!isOwner && !isPrivileged) {
       return NextResponse.json({ error: 'Access denied' }, { status: 403 });
     }
 
@@ -53,6 +57,10 @@ export async function PUT(
     if (!plan) {
       return NextResponse.json({ error: 'Plan not found' }, { status: 404 });
     }
+
+    // Students are read-only, so refuse before the ownership check runs.
+    const roleError = await requireRole('teacher', 'coordinator', 'admin')(request);
+    if (roleError) return roleError;
 
     // Check authorization
     if (plan.teacher_id !== request.user.userId && request.user.role !== 'admin') {
@@ -87,6 +95,10 @@ export async function DELETE(
     if (!plan) {
       return NextResponse.json({ error: 'Plan not found' }, { status: 404 });
     }
+
+    // Students are read-only, so refuse before the ownership check runs.
+    const roleError = await requireRole('teacher', 'coordinator', 'admin')(request);
+    if (roleError) return roleError;
 
     // Check authorization
     if (plan.teacher_id !== request.user.userId && request.user.role !== 'admin') {

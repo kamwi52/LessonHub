@@ -1,4 +1,5 @@
 import { query } from '@/lib/server/database';
+import { Role } from '@/types';
 
 export interface User {
   id: number;
@@ -7,7 +8,7 @@ export interface User {
   password_hash: string;
   first_name: string;
   last_name: string;
-  role: 'teacher' | 'coordinator' | 'admin';
+  role: Role;
   subjects_taught?: string[] | null;
   created_at: Date;
   updated_at: Date;
@@ -35,7 +36,7 @@ export async function createUser(userData: {
   password_hash: string;
   first_name: string;
   last_name: string;
-  role: string;
+  role: Role;
 }): Promise<User> {
   const result = await query(
     `INSERT INTO users (school_id, email, password_hash, first_name, last_name, role)

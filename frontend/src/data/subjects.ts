@@ -10,6 +10,12 @@ import { MATH_CURRICULUM } from './math-curriculum';
 import { MATH_TERM3_WEEKS } from './math-t3-weeks';
 import { COMPUTER_STUDIES } from './syllabus-computer-studies';
 import { CS_TERM3_WEEKS } from './cs-t3-weeks';
+import { BIOLOGY_CURRICULUM } from './syllabus-biology';
+import { BIOLOGY_TERM3_WEEKS } from './biology-t3-weeks';
+import { CHEMISTRY_CURRICULUM } from './syllabus-chemistry';
+import { CHEMISTRY_TERM3_WEEKS } from './chemistry-t3-weeks';
+import { PHYSICS_CURRICULUM } from './syllabus-physics';
+import { PHYSICS_TERM3_WEEKS } from './physics-t3-weeks';
 
 // Attach Term 3 weekly plans (weeks 1-13) to every grade that has a `-t3` term.
 for (const g of ICT_CURRICULUM) {
@@ -26,6 +32,17 @@ for (const g of COMPUTER_STUDIES) {
   const weeks = CS_TERM3_WEEKS[g.id];
   const t3 = g.terms.find((t) => t.id.endsWith('-t3'));
   if (weeks && t3) { t3.weekPlans = weeks; t3.weeks = 13; }
+}
+for (const [curriculum, planners] of [
+  [BIOLOGY_CURRICULUM, BIOLOGY_TERM3_WEEKS],
+  [CHEMISTRY_CURRICULUM, CHEMISTRY_TERM3_WEEKS],
+  [PHYSICS_CURRICULUM, PHYSICS_TERM3_WEEKS],
+] as const) {
+  for (const g of curriculum) {
+    const weeks = planners[g.id];
+    const t3 = g.terms.find((t) => t.id.endsWith('-t3'));
+    if (weeks && t3) { t3.weekPlans = weeks; t3.weeks = 13; }
+  }
 }
 
 export type SubjectEntry = {
@@ -79,6 +96,54 @@ export const SUBJECTS: SubjectEntry[] = [
     featured: true,
     syllabusRef: 'CDC Ordinary Level Mathematics Syllabus, Forms 1-4',
     lessonRef: "2024 CDC O-Level Mathematics Syllabus Forms 1-4; Pupil's Textbook, Calculator & Graph Paper",
+  },
+  {
+    id: 'biology',
+    name: 'Biology',
+    shortCode: 'BIO',
+    icon: '🧬',
+    color: 'green',
+    description: 'Cells, transport, nutrition, respiration, reproduction, genetics and ecology — CDC O-Level syllabus (Forms 1-4).',
+    grades: ['Form 1', 'Form 2', 'Form 3', 'Form 4'],
+    levels: ['Ordinary Level'],
+    term3Weeks: BIOLOGY_TERM3_WEEKS,
+    curriculum: BIOLOGY_CURRICULUM,
+    status: 'ready',
+    featured: true,
+    syllabusRef: 'CDC Ordinary Level Biology Syllabus, Forms 1-4',
+    lessonRef: 'CDC O-Level Biology Syllabus Forms 1-4; Biology Laboratory & Specimens',
+  },
+  {
+    id: 'chemistry',
+    name: 'Chemistry',
+    shortCode: 'CHEM',
+    icon: '⚗️',
+    color: 'amber',
+    description: 'Matter, atomic structure, reactions, stoichiometry, acids and bases, metals and organic chemistry — CDC O-Level syllabus (Forms 1-4).',
+    grades: ['Form 1', 'Form 2', 'Form 3', 'Form 4'],
+    levels: ['Ordinary Level'],
+    term3Weeks: CHEMISTRY_TERM3_WEEKS,
+    curriculum: CHEMISTRY_CURRICULUM,
+    status: 'ready',
+    featured: true,
+    syllabusRef: 'CDC Ordinary Level Chemistry Syllabus, Forms 1-4',
+    lessonRef: 'CDC O-Level Chemistry Syllabus Forms 1-4; Chemistry Laboratory & Reagents',
+  },
+  {
+    id: 'physics',
+    name: 'Physics',
+    shortCode: 'PHY',
+    icon: '🧲',
+    color: 'indigo',
+    description: 'Measurement, mechanics, heat, waves, electricity, magnetism and modern physics — CDC O-Level syllabus (Forms 1-4).',
+    grades: ['Form 1', 'Form 2', 'Form 3', 'Form 4'],
+    levels: ['Ordinary Level'],
+    term3Weeks: PHYSICS_TERM3_WEEKS,
+    curriculum: PHYSICS_CURRICULUM,
+    status: 'ready',
+    featured: true,
+    syllabusRef: 'CDC Ordinary Level Physics Syllabus, Forms 1-4',
+    lessonRef: 'CDC O-Level Physics Syllabus Forms 1-4; Physics Laboratory & Apparatus',
   },
   {
     id: 'computer-studies',

@@ -1,15 +1,58 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard, LibraryBig, GraduationCap, CalendarDays, PenLine,
   ClipboardList, PlusCircle, SearchCheck, ShieldCheck, LogOut, X, Menu,
-  ChevronLeft,
+  ChevronLeft, ArrowLeft,
 } from 'lucide-react';
 import { useAuthStore, useUIStore } from '@/store';
 import { SUBJECTS } from '@/data/subjects';
 import { subjectTheme } from '@/components/subject-theme';
+
+/** Tailwind's `md` breakpoint. Keep in sync with the `md:` classes below. */
+const MOBILE_QUERY = '(max-width: 767px)';
+
+/**
+ * `useLayoutEffect` cannot run during SSR and React warns about it, so fall
+ * back to `useEffect` on the server. On the client the layout variant runs
+ * after the DOM is updated but *before* the browser paints, which lets us close
+ * the drawer on a phone without the open drawer ever being visible.
+ */
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
+
+/** True once the viewport is phone-sized. Always false during SSR. */
+function useIsMobile(): boolean {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  useIsomorphicLayoutEffect(() => {
+    const mq = window.matchMedia(MOBILE_QUERY);
+    setIsMobile(mq.matches);
+    const onChange = (event: MediaQueryListEvent) => setIsMobile(event.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  return isMobile;
+}
+
+/** Pages that sit at the top of the nav tree, so "back" has nowhere to go. */
+const ROOT_PATHS = ['/dashboard', '/subjects', '/learn', '/plans'];
+
+/**
+ * The parent page used by the mobile back button.
+ *
+ * Derived from the path rather than `history.back()` so the button always goes
+ * *up* the nav tree. Retracing history would be unpredictable, and on a fresh
+ * login it would send the user back to the sign-in screen.
+ */
+function parentPath(pathname: string): string {
+  const segments = pathname.split('/').filter(Boolean);
+  if (segments.length <= 1) return '/dashboard';
+  return '/' + segments.slice(0, -1).join('/');
+}
 
 const NAV_TEACH = [
   { href: '/dashboard', label: 'Dashboard', Icon: LayoutDashboard },
@@ -27,7 +70,24 @@ const NAV_PLAN = [
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const user = useAuthStore((state) => state.user);
   const hasHydrated = useAuthStore((state) => state.hasHydrated);
-  const { sidebarOpen, toggleSidebar } = useUIStore();
+  const { sidebarOpen, setSidebarOpen, toggleSidebar } = useUIStore();
+  const pathname = usePathname();
+  const router = useRouter();
+  const isMobile = useIsMobile();
+
+  // On a phone the drawer is an overlay, so it has to start closed or it covers
+  // the page on first load. This runs during layout - after the DOM updates but
+  // before the browser paints - so an open drawer is never visible. The store
+  // default stays `true` because that is what desktop renders during SSR.
+  useIsomorphicLayoutEffect(() => {
+    if (window.matchMedia(MOBILE_QUERY).matches) setSidebarOpen(false);
+  }, [setSidebarOpen]);
+
+  // Tapping a link inside the drawer must dismiss it, otherwise it keeps
+  // covering the page the user just navigated to.
+  useEffect(() => {
+    if (isMobile) setSidebarOpen(false);
+  }, [pathname, isMobile, setSidebarOpen]);
 
   // Wait for persisted session to rehydrate before deciding layout,
   // otherwise first paint flashes "no user" and pages bounce to /login.
@@ -45,14 +105,29 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     );
   }
 
+  const isRootPage = ROOT_PATHS.includes(pathname);
+
   return (
-    <div className="flex h-screen print-shell">
+    <div className="flex flex-col h-screen print-shell">
+      {/*
+        The phone header sits outside the <aside> deliberately. The drawer is
+        translated off-screen when closed, so a toggle rendered inside it would
+        be unreachable and the user would be stranded with no navigation.
+      */}
       {user && (
-        <>
-          {sidebarOpen && (
-            <div className="fixed inset-0 bg-slate-950/50 z-20 md:hidden" onClick={toggleSidebar} />
-          )}
-          <aside
+        <MobileBar
+          showBack={!isRootPage}
+          onMenu={toggleSidebar}
+          onBack={() => router.push(parentPath(pathname))}
+        />
+      )}
+      <div className="flex flex-1 min-h-0">
+        {user && (
+          <>
+            {sidebarOpen && (
+              <div className="fixed inset-0 bg-slate-950/50 z-20 md:hidden" onClick={toggleSidebar} />
+            )}
+            <aside
             className={
               'no-print z-30 flex flex-col shrink-0 transition-all duration-300 max-md:fixed max-md:inset-y-0 max-md:left-0 ' +
               (sidebarOpen ? 'w-64 max-md:translate-x-0' : 'w-20 max-md:-translate-x-full')
@@ -142,6 +217,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           </aside>
         </>
       )}
+      </div>
       <main className="flex-1 overflow-auto app-main min-w-0 print-main">
         {user ? (
           <div className="p-4 md:p-8 max-w-6xl mx-auto w-full">{children}</div>
@@ -150,6 +226,34 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         )}
       </main>
     </div>
+  );
+}
+
+function MobileBar({ showBack, onMenu, onBack }: { showBack: boolean; onMenu: () => void; onBack: () => void }) {
+  return (
+    <header className="md:hidden flex items-center justify-between h-14 px-4 shrink-0 bg-[#0d1730] text-white border-b border-white/10">
+      <button
+        type="button"
+        onClick={onMenu}
+        className="p-2 rounded-lg hover:bg-white/10"
+        aria-label="Open navigation menu"
+      >
+        <Menu size={20} />
+      </button>
+      <span className="text-sm font-extrabold">LessonsHub</span>
+      {showBack ? (
+        <button
+          type="button"
+          onClick={onBack}
+          className="p-2 rounded-lg hover:bg-white/10"
+          aria-label="Go back"
+        >
+          <ArrowLeft size={20} />
+        </button>
+      ) : (
+        <span className="w-9" aria-hidden="true" />
+      )}
+    </header>
   );
 }
 

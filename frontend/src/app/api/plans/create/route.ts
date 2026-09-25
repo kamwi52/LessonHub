@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { authMiddleware } from '@/lib/server/auth';
+import { authMiddleware, requireRole } from '@/lib/server/auth';
 import { createPlan } from '@/lib/server/models/Plan';
 
 export async function POST(request: NextRequest) {
@@ -10,6 +10,11 @@ export async function POST(request: NextRequest) {
   if (!request.user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
+
+  // Only staff author plans. Students have read-only access, so this is
+  // enforced here rather than only hiding the button in the UI.
+  const roleError = await requireRole('teacher', 'coordinator', 'admin')(request);
+  if (roleError) return roleError;
 
   try {
     const body = await request.json();
