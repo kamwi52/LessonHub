@@ -217,7 +217,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           </aside>
         </>
       )}
-      </div>
       <main className="flex-1 overflow-auto app-main min-w-0 print-main">
         {user ? (
           <div className="p-4 md:p-8 max-w-6xl mx-auto w-full">{children}</div>
@@ -225,6 +224,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           <div className="flex items-center justify-center h-full">{children}</div>
         )}
       </main>
+      </div>
     </div>
   );
 }
