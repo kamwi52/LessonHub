@@ -37,5 +37,8 @@ Thumbs.db
 .docker/
 tsconfig.tsbuildinfo
 
+# Local print-check harness (CDP scripts + generated PDFs/PNGs, not part of the app)
+frontend/.printcheck/
+
 # Syllabus pipeline cache (regenerable: npm run syllabus:fetch / extract / generate)
 /syllabi/

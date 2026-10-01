@@ -19,14 +19,14 @@ const META = {
       "2024 CDC O-Level ICT Syllabus Forms 1-4; Teacher's Notes, Handouts & the Internet",
   },
   'computer-studies': {
-    name: 'Computer Studies',
+    name: 'Computer Science',
     shortCode: 'CS',
     icon: '🖥️',
     color: 'violet',
     description:
-      'Hardware, operating systems, networking, programming, databases and multimedia — CDC Computer Science syllabus (Forms 1-4).',
+      'Computer science fundamentals, programming, databases, networks, cybersecurity, emerging technologies and multimedia — CDC Ordinary Level syllabus (Forms 1-4).',
     syllabusRef: 'CDC Ordinary Level Computer Science Syllabus, Forms 1-4',
-    lessonRef: '2024 CDC O-Level Computer Science Syllabus Forms 1-4; Digital Resources',
+    lessonRef: 'CDC O-Level Computer Science Syllabus Forms 1-4; Digital Resources',
   },
   mathematics: {
     name: 'Mathematics',
@@ -40,8 +40,9 @@ const META = {
       "2024 CDC O-Level Mathematics Syllabus Forms 1-4; Pupil's Textbook, Calculator & Graph Paper",
   },
   'integrated-science': {
-    // No standalone Integrated Science syllabus exists in the Drive folder; the
-    // "CIVIC EDUCATION SYLLABUS SCIENCE" PDF turned out to be Civic Education.
+    // No standalone Integrated Science syllabus ships in the Drive folder: the
+    // "CIVIC EDUCATION SYLLABUS SCIENCE" PDF is mapped to `civic-education`
+    // instead (see EXTRA_FILES), so no source resolves to this id.
     name: 'Integrated Science',
     shortCode: 'SCI',
     icon: '🔬',

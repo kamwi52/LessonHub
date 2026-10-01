@@ -43,6 +43,7 @@ function schemeHTML(subject, gradeName, rows) {
 </head>
 <body>
   <div class="header">
+    <p style="font-size:11px;font-weight:bold;letter-spacing:1px;margin:0 0 4px 0;color:#475569">MINISTRY OF EDUCATION</p>
     <h1>LINDA SECONDARY SCHOOL</h1>
     <h2>SCHEMES OF WORK</h2>
     <p>SUBJECT: ${subject.name.toUpperCase()} | LEVEL: ${gradeName.toUpperCase()} | TERM: 3 | YEAR: 2026</p>

@@ -1,5 +1,5 @@
 'use client';
-import { Suspense, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { CalendarDays, Printer } from 'lucide-react';
 import { useAuthStore } from '@/store';
@@ -8,7 +8,7 @@ import { PageHero } from '@/components/ui';
 import { SubjectTile } from '@/components/subject-theme';
 import { resolveSubjectId, SUBJECTS } from '@/data/subjects';
 import {
-  SCHOOL_NAME, buildSchemeRows, getForms, getGradeById, getSubjectName, getSyllabusRef, getTerm3,
+  DEFAULT_SCHOOL_NAME, MINISTRY_NAME, buildSchemeRows, getForms, getGradeById, getSubjectName, getSyllabusRef, getTerm3,
 } from '@/data/scheme';
 
 export default function SchemeOfWorkPage() {
@@ -28,6 +28,7 @@ function SchemeOfWorkPageInner() {
   const subjectId = resolveSubjectId(searchParams.get('subject'));
   const forms = useMemo(() => getForms(subjectId), [subjectId]);
   const [gradeId, setGradeId] = useState('');
+  const [schoolName, setSchoolName] = useState('');
   const grade = getGradeById(subjectId, gradeId) ?? forms[0];
   const term = getTerm3(subjectId, grade?.id ?? gradeId);
   const rows = useMemo(
@@ -35,8 +36,28 @@ function SchemeOfWorkPageInner() {
     [subjectId, grade, gradeId, term],
   );
 
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('lessonshub_school_name');
+      if (saved) setSchoolName(saved);
+    } catch { /* ignore */ }
+  }, []);
+
+  const handleSchoolNameChange = (val: string) => {
+    setSchoolName(val);
+    try {
+      if (val.trim()) {
+        localStorage.setItem('lessonshub_school_name', val);
+      } else {
+        localStorage.removeItem('lessonshub_school_name');
+      }
+    } catch { /* ignore */ }
+  };
+
   if (!hasHydrated) { return <div>Loading...</div>; }
   if (!user) { router.push('/login'); return <div>Redirecting...</div>; }
+
+  const displaySchoolName = (schoolName.trim() || DEFAULT_SCHOOL_NAME).toUpperCase();
 
   return (
     <div className="space-y-5">
@@ -45,7 +66,7 @@ function SchemeOfWorkPageInner() {
         <PageHero
           eyebrow="Printable Document"
           title={<span className="flex items-center gap-3"><SubjectTile id={subjectId} size={24} />Schemes of Work</span>}
-          description={(SUBJECTS.find((s) => s.id === subjectId)?.name ?? 'Subject') + ' · Term 3 · 2026. Pick a class, review the table, then print.'}
+          description={(SUBJECTS.find((s) => s.id === subjectId)?.name ?? 'Subject') + ' · Term 3 · 2026. Set the school name, pick a class, review the table, then print.'}
           actions={
             <button className="btn btn-small bg-amber-400 text-slate-900 hover:bg-amber-300 font-extrabold" onClick={() => window.print()}>
               <Printer size={14} /> Print Scheme
@@ -55,6 +76,14 @@ function SchemeOfWorkPageInner() {
         <SubjectTabs current={subjectId} />
 
         <div className="card !p-5 flex flex-wrap gap-4 items-end">
+          <div className="w-56">
+            <label className="block text-xs font-bold uppercase tracking-wider mb-1.5">School Name</label>
+            <input
+              value={schoolName}
+              placeholder={DEFAULT_SCHOOL_NAME}
+              onChange={(e) => handleSchoolNameChange(e.target.value)}
+            />
+          </div>
           <div className="min-w-[170px]">
             <label className="block text-xs font-bold uppercase tracking-wider mb-1.5">Class</label>
             <select value={grade?.id ?? ''} onChange={(e) => setGradeId(e.target.value)} className="w-48">
@@ -87,7 +116,8 @@ function SchemeOfWorkPageInner() {
         </div>
 
         <div className="text-center mb-4">
-          <h1 className="text-lg font-extrabold tracking-wide">{SCHOOL_NAME}</h1>
+          <p className="text-xs font-bold tracking-wider leading-tight uppercase text-slate-600 mb-0.5">{MINISTRY_NAME}</p>
+          <h1 className="text-lg font-extrabold tracking-wide">{displaySchoolName}</h1>
           <h2 className="text-base font-extrabold text-indigo-700">SCHEMES OF WORK</h2>
           <p className="text-[13px] font-bold text-slate-700 mt-1">
             SUBJECT: {getSubjectName(subjectId).toUpperCase()} &nbsp;·&nbsp; LEVEL: {(grade?.grade ?? '').toUpperCase()} &nbsp;·&nbsp; TERM: 3 &nbsp;·&nbsp; YEAR: 2026

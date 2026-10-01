@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calculator, Cpu, GraduationCap, Monitor } from 'lucide-react';
+import { Calculator, Cpu, GraduationCap, Landmark, Monitor } from 'lucide-react';
 
 export type SubjectTheme = {
   gradient: string;
@@ -27,6 +27,12 @@ export const SUBJECT_THEMES: Record<string, SubjectTheme> = {
     soft: 'bg-violet-50 text-violet-700 border-violet-200',
     dot: 'bg-violet-500',
     Icon: Cpu,
+  },
+  'civic-education': {
+    gradient: 'from-purple-500 to-amber-600',
+    soft: 'bg-purple-50 text-purple-700 border-purple-200',
+    dot: 'bg-purple-500',
+    Icon: Landmark,
   },
 };
 

@@ -1,657 +1,1497 @@
-// AUTO-GENERATED Term 3 weekly lesson plans for Computer Studies (Grades 8-12) — do not edit by hand.
-// Derived from the parsed syllabus topics (see gen_cs2.mjs). Structure: Weeks 1-6 lessons ·
-// Week 7 mid-term exams · Weeks 8-11 lessons · Week 12 revision · Week 13 end-of-year exams.
+// AUTO-GENERATED Term 3 weekly lesson plans for Computer Science / Studies (Forms 1-4). Do not edit by hand.
 import type { WeekPlan } from './ict-curriculum';
 
 export const CS_TERM3_WEEKS: Record<string, WeekPlan[]> = {
-  'grade-8': [
+  "form-1": [
     {
-      week: 1, type: "lesson", title: "Define desktop publishing", focus: "8.7.1.1",
-      objectives: ["Define desktop publishing"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Publishing basics and Features.",
-      development: ["Desktop publishing (Include: typesetting, and layout designs usingdesktop computers)", "Types of a publication(Include: text and graphics)", "Features of desktop publishing and wordprocessing software", "Frames in which text andgraphics are placed", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Publishing basics and Features in your exercise book.",
-      assessment: "Understanding demonstrated: Define desktop publishing",
+      "week": 1,
+      "type": "lesson",
+      "title": "Demonstrate ethical practices and digital citizenship online",
+      "focus": "1.8.1.1",
+      "objectives": [
+        "Discussing digital citizenship.",
+        "Demonstrating respectful communication in online interaction",
+        "Distinguish between fact, opinion, and bias in digital content"
+      ],
+      "starter": "Recall key concepts of Digital Ethics and review previous lesson outcomes.",
+      "development": [
+        "Discussing digital citizenship.",
+        "Demonstrating respectful communication in online interaction",
+        "Distinguish between fact, opinion, and bias in digital content",
+        "Demonstrate how to balance screen time with oline activities to maintain physical and mental well-being.",
+        "demonstrating a culture of inclusion, respect and fairness in online communities Ethical Behavior in Digital Environment Demonstrated Appropriately PAGE 24"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Digital Ethics.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Digital Ethics"
+      ],
+      "homework": "Complete practical exercises on Demonstrate ethical practices and digital citizenship online and submit the lab report.",
+      "assessment": "Behavior in a Digital Environment Introduction to Databases"
     },
     {
-      week: 2, type: "lesson", title: "Identify the two types of a publication", focus: "8.7.1.2",
-      objectives: ["Identify the two types of a publication"],
-      starter: "Show a real computer part, printout or screenshot related to Publishing basics and Features; learners identify what they see.",
-      development: ["Desktop publishing (Include: typesetting, and layout designs usingdesktop computers)", "Types of a publication(Include: text and graphics)", "Features of desktop publishing and wordprocessing software", "Frames in which text andgraphics are placed", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Publishing basics and Features in your exercise book.",
-      assessment: "Understanding demonstrated: Identify the two types of a publication",
+      "week": 2,
+      "type": "lesson",
+      "title": "Create and manage databases using relational DBMS",
+      "focus": "1.9.1.1",
+      "objectives": [
+        "Defining databases",
+        "Discussing the key concepts of databases such as tables, records, fields and keys.",
+        "Dierentiate types of databases"
+      ],
+      "starter": "Recall key concepts of Database Management and review previous lesson outcomes.",
+      "development": [
+        "Defining databases",
+        "Discussing the key concepts of databases such as tables, records, fields and keys.",
+        "Dierentiate types of databases",
+        "Describing the types of database models",
+        "Identifying popular DBMS software (access, oracle, maria db )",
+        "Create tables and define their structures using database tools."
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Database Management.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Database Management"
+      ],
+      "homework": "Complete practical exercises on Create and manage databases using relational DBMS and submit the lab report.",
+      "assessment": "databases Databases successfully created and managed INTELLIGENCE fundamenta ls of Artificial Intelligence (AI)"
     },
     {
-      week: 3, type: "lesson", title: "Compare different features of desktop publishing and word processing software", focus: "8.7.1.3",
-      objectives: ["Compare different features of desktop publishing and word processing software"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for Publishing basics and Features.",
-      development: ["Desktop publishing (Include: typesetting, and layout designs usingdesktop computers)", "Types of a publication(Include: text and graphics)", "Features of desktop publishing and wordprocessing software", "Frames in which text andgraphics are placed", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Publishing basics and Features in your exercise book.",
-      assessment: "Understanding demonstrated: Compare different features of desktop publishing and word processing software",
+      "week": 3,
+      "type": "lesson",
+      "title": "Design and understand Artificial Intelligence models",
+      "focus": "1.10.1.1",
+      "objectives": [
+        "Defining AI",
+        "Discussing the core concepts of AI including machine learning, deep learning and natural language processing",
+        "Identifying the problems to be solved"
+      ],
+      "starter": "Recall key concepts of Artificial Intelligence (AI) and review previous lesson outcomes.",
+      "development": [
+        "Defining AI",
+        "Discussing the core concepts of AI including machine learning, deep learning and natural language processing",
+        "Identifying the problems to be solved",
+        "Determining objectives of the model.",
+        "Collecting and preparing datasets for creating AI models",
+        "Using simple machine learning to create AI models. Artificial Intelligence (AI) Models designed. PAGE 25"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Artificial Intelligence (AI).",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Artificial Intelligence (AI)"
+      ],
+      "homework": "Complete practical exercises on Design and understand Artificial Intelligence models and submit the lab report.",
+      "assessment": "Intelligence (AI) Models THINGS (IOT) Components of Internet Things (IoT)"
     },
     {
-      week: 4, type: "lesson", title: "Generate frames in which text and graphics are placed", focus: "8.7.1.4",
-      objectives: ["Generate frames in which text and graphics are placed"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Publishing basics and Features.",
-      development: ["Desktop publishing (Include: typesetting, and layout designs usingdesktop computers)", "Types of a publication(Include: text and graphics)", "Features of desktop publishing and wordprocessing software", "Frames in which text andgraphics are placed", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Publishing basics and Features in your exercise book.",
-      assessment: "Understanding demonstrated: Generate frames in which text and graphics are placed",
+      "week": 4,
+      "type": "lesson",
+      "title": "Demonstrate understanding of Internet of Things (IoT) systems",
+      "focus": "1.11.1.1",
+      "objectives": [
+        "Discussing the concepts of IoT",
+        "Identifying key components of IoT systems, such as sensors, actuators, microcontrollers and communication modules. Understanding of IoT components demonstrated"
+      ],
+      "starter": "Recall key concepts of Basic Components of IoT and review previous lesson outcomes.",
+      "development": [
+        "Discussing the concepts of IoT",
+        "Identifying key components of IoT systems, such as sensors, actuators, microcontrollers and communication modules. Understanding of IoT components demonstrated"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Basic Components of IoT.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Basic Components of IoT"
+      ],
+      "homework": "Complete practical exercises on Demonstrate understanding of Internet of Things (IoT) systems and submit the lab report.",
+      "assessment": "understanding of IoT components. appropriately. Introduction to Logic Gates"
     },
     {
-      week: 5, type: "lesson", title: "Edit the layout of a publication", focus: "8.7.1.5",
-      objectives: ["Edit the layout of a publication"],
-      starter: "Show a real computer part, printout or screenshot related to Publishing basics and Features; learners identify what they see.",
-      development: ["Desktop publishing (Include: typesetting, and layout designs usingdesktop computers)", "Types of a publication(Include: text and graphics)", "Features of desktop publishing and wordprocessing software", "Frames in which text andgraphics are placed", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Publishing basics and Features in your exercise book.",
-      assessment: "Understanding demonstrated: Edit the layout of a publication",
+      "week": 5,
+      "type": "lesson",
+      "title": "Create digital control systems using logic gates",
+      "focus": "1.12.1.1",
+      "objectives": [
+        "Discussing the concept of logic gates and their role in digital circuits",
+        "Identifying types of logic gates and their symbols",
+        "Analyzing combinational and sequential logic gates"
+      ],
+      "starter": "Recall key concepts of Digital Control Systems and review previous lesson outcomes.",
+      "development": [
+        "Discussing the concept of logic gates and their role in digital circuits",
+        "Identifying types of logic gates and their symbols",
+        "Analyzing combinational and sequential logic gates",
+        "Working with Truth Tables",
+        "Creating a simple digital control system such as alarm system, trac lights)",
+        "Digital control systems"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Digital Control Systems.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Digital Control Systems"
+      ],
+      "homework": "Complete practical exercises on Create digital control systems using logic gates and submit the lab report.",
+      "assessment": "systems successfully created"
     },
     {
-      week: 6, type: "lesson", title: "Input text directly into a publication", focus: "8.7.2.1",
-      objectives: ["Input text directly into a publication"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for Pre-designed layouts or Templates.",
-      development: ["Editing the layout of apublication", "Inputting text into apublication", "Importing text from word processing document into apublication", "Three elements of fonts (Include: typeface, style andpoint size)", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Pre-designed layouts or Templates in your exercise book.",
-      assessment: "Understanding demonstrated: Input text directly into a publication",
+      "week": 6,
+      "type": "lesson",
+      "title": "Demonstrate ethical practices and digital citizenship online",
+      "focus": "1.8.1.1",
+      "objectives": [
+        "Discussing digital citizenship.",
+        "Demonstrating respectful communication in online interaction",
+        "Distinguish between fact, opinion, and bias in digital content"
+      ],
+      "starter": "Recall key concepts of Digital Ethics and review previous lesson outcomes.",
+      "development": [
+        "Discussing digital citizenship.",
+        "Demonstrating respectful communication in online interaction",
+        "Distinguish between fact, opinion, and bias in digital content",
+        "Demonstrate how to balance screen time with oline activities to maintain physical and mental well-being.",
+        "demonstrating a culture of inclusion, respect and fairness in online communities Ethical Behavior in Digital Environment Demonstrated Appropriately PAGE 24"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Digital Ethics.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Digital Ethics"
+      ],
+      "homework": "Complete practical exercises on Demonstrate ethical practices and digital citizenship online and submit the lab report.",
+      "assessment": "Behavior in a Digital Environment Introduction to Databases"
     },
     {
-      week: 7, type: "exam", title: "Mid-Term Examinations", focus: "Weeks 1-6",
-      objectives: ["Revise Weeks 1-6 content", "Complete the mid-term assessment"],
-      starter: "Revision quiz game covering Weeks 1-6 before the paper.",
-      development: ["Revision of key points from Weeks 1-6", "Mid-term written test (45 min)", "Practical task on the computer"],
-      plenary: "Go over common mistakes from the test.",
-      resources: ["Question papers", "Answer sheets", "Computer lab"],
-      assessment: "Mid-term exam marks recorded",
+      "week": 7,
+      "type": "exam",
+      "title": "Mid-Term Examination",
+      "focus": "Weeks 1-6",
+      "objectives": [
+        "Assess learner competences and practical mastery in Form 1 Computer Science",
+        "Identify learning gaps and provide structured feedback"
+      ],
+      "starter": "Explain examination rules, question structure, and practical assessment expectations.",
+      "development": [
+        "Assess competences taught in Weeks 1 to 6.",
+        "Learners complete written and practical tasks under standard examination conditions."
+      ],
+      "plenary": "Collect scripts, verify digital file submissions, and conclude the examination session.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Examination question papers",
+        "Marking guide"
+      ],
+      "homework": "Review examination topics and compile revision questions on identified weak areas.",
+      "assessment": "Marked scripts and recorded practical task scores."
     },
     {
-      week: 8, type: "lesson", title: "Import text from word processing document into a publication", focus: "8.7.2.2",
-      objectives: ["Import text from word processing document into a publication"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Pre-designed layouts or Templates.",
-      development: ["Editing the layout of apublication", "Inputting text into apublication", "Importing text from word processing document into apublication", "Three elements of fonts (Include: typeface, style andpoint size)", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Pre-designed layouts or Templates in your exercise book.",
-      assessment: "Understanding demonstrated: Import text from word processing document into a publication",
+      "week": 8,
+      "type": "lesson",
+      "title": "Create and manage databases using relational DBMS",
+      "focus": "1.9.1.1",
+      "objectives": [
+        "Defining databases",
+        "Discussing the key concepts of databases such as tables, records, fields and keys.",
+        "Dierentiate types of databases"
+      ],
+      "starter": "Recall key concepts of Database Management and review previous lesson outcomes.",
+      "development": [
+        "Defining databases",
+        "Discussing the key concepts of databases such as tables, records, fields and keys.",
+        "Dierentiate types of databases",
+        "Describing the types of database models",
+        "Identifying popular DBMS software (access, oracle, maria db )",
+        "Create tables and define their structures using database tools."
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Database Management.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Database Management"
+      ],
+      "homework": "Complete practical exercises on Create and manage databases using relational DBMS and submit the lab report.",
+      "assessment": "databases Databases successfully created and managed INTELLIGENCE fundamenta ls of Artificial Intelligence (AI)"
     },
     {
-      week: 9, type: "lesson", title: "Apply the three elements of fonts", focus: "8.7.3.1",
-      objectives: ["Apply the three elements of fonts"],
-      starter: "Show a real computer part, printout or screenshot related to Fonts; learners identify what they see.",
-      development: ["Graphics using basic", "Identification ofproductivity tools", "Manipulation ofproductivity tools", "Accuracy in the use ofproductivity tools", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Fonts in your exercise book.",
-      assessment: "Understanding demonstrated: Apply the three elements of fonts",
+      "week": 9,
+      "type": "lesson",
+      "title": "Design and understand Artificial Intelligence models",
+      "focus": "1.10.1.1",
+      "objectives": [
+        "Defining AI",
+        "Discussing the core concepts of AI including machine learning, deep learning and natural language processing",
+        "Identifying the problems to be solved"
+      ],
+      "starter": "Recall key concepts of Artificial Intelligence (AI) and review previous lesson outcomes.",
+      "development": [
+        "Defining AI",
+        "Discussing the core concepts of AI including machine learning, deep learning and natural language processing",
+        "Identifying the problems to be solved",
+        "Determining objectives of the model.",
+        "Collecting and preparing datasets for creating AI models",
+        "Using simple machine learning to create AI models. Artificial Intelligence (AI) Models designed. PAGE 25"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Artificial Intelligence (AI).",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Artificial Intelligence (AI)"
+      ],
+      "homework": "Complete practical exercises on Design and understand Artificial Intelligence models and submit the lab report.",
+      "assessment": "Intelligence (AI) Models THINGS (IOT) Components of Internet Things (IoT)"
     },
     {
-      week: 10, type: "lesson", title: "Create graphics using basic graphic elements", focus: "8.7.4.1",
-      objectives: ["Create graphics using basic graphic elements"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for Elementary Graphics.",
-      development: ["Loading a publishingpackage", "Switching between two or more loaded publishingpackages", "Entrepreneurship in the use ofproductivity tools", "Accuracy in the use of productivitytools", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Elementary Graphics in your exercise book.",
-      assessment: "Understanding demonstrated: Create graphics using basic graphic elements",
+      "week": 10,
+      "type": "lesson",
+      "title": "Demonstrate understanding of Internet of Things (IoT) systems",
+      "focus": "1.11.1.1",
+      "objectives": [
+        "Discussing the concepts of IoT",
+        "Identifying key components of IoT systems, such as sensors, actuators, microcontrollers and communication modules. Understanding of IoT components demonstrated"
+      ],
+      "starter": "Recall key concepts of Basic Components of IoT and review previous lesson outcomes.",
+      "development": [
+        "Discussing the concepts of IoT",
+        "Identifying key components of IoT systems, such as sensors, actuators, microcontrollers and communication modules. Understanding of IoT components demonstrated"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Basic Components of IoT.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Basic Components of IoT"
+      ],
+      "homework": "Complete practical exercises on Demonstrate understanding of Internet of Things (IoT) systems and submit the lab report.",
+      "assessment": "understanding of IoT components. appropriately. Introduction to Logic Gates"
     },
     {
-      week: 11, type: "lesson", title: "Select colours for the outlines and fill of objectsfrom the palette", focus: "8.7.5.1",
-      objectives: ["Select colours for the outlines and fill of objectsfrom the palette"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Colours and Fonts.",
-      development: ["Teamwork in designinggraphics", "Quality work in using desktoppublishing", "Colours for the outlines and fill of objects from thepalette", "Integrating Text intographic design", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Colours and Fonts in your exercise book.",
-      assessment: "Understanding demonstrated: Select colours for the outlines and fill of objectsfrom the palette",
+      "week": 11,
+      "type": "lesson",
+      "title": "Create digital control systems using logic gates",
+      "focus": "1.12.1.1",
+      "objectives": [
+        "Discussing the concept of logic gates and their role in digital circuits",
+        "Identifying types of logic gates and their symbols",
+        "Analyzing combinational and sequential logic gates"
+      ],
+      "starter": "Recall key concepts of Digital Control Systems and review previous lesson outcomes.",
+      "development": [
+        "Discussing the concept of logic gates and their role in digital circuits",
+        "Identifying types of logic gates and their symbols",
+        "Analyzing combinational and sequential logic gates",
+        "Working with Truth Tables",
+        "Creating a simple digital control system such as alarm system, trac lights)",
+        "Digital control systems"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Digital Control Systems.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Digital Control Systems"
+      ],
+      "homework": "Complete practical exercises on Create digital control systems using logic gates and submit the lab report.",
+      "assessment": "systems successfully created"
     },
     {
-      week: 12, type: "revision", title: "Term Revision & Practical", focus: "Weeks 1-11",
-      objectives: ["Consolidate Weeks 1-11 content", "Practise past-style questions"],
-      starter: "Learners list the topics covered this term on the board.",
-      development: ["Concept-map of the term’s topics", "Past-style questions and corrections", "Practical revision task on the computer"],
-      plenary: "Learners identify their weakest topic and how to revise it.",
-      resources: ["Past papers", "Computer lab"],
-      homework: "Revise all term notes for the end-of-year examination.",
-      assessment: "Revision exercise marked",
+      "week": 12,
+      "type": "revision",
+      "title": "Revision & Consolidation",
+      "focus": "Term 3 consolidation",
+      "objectives": [
+        "Assess learner competences and practical mastery in Form 1 Computer Science",
+        "Identify learning gaps and provide structured feedback"
+      ],
+      "starter": "Explain examination rules, question structure, and practical assessment expectations.",
+      "development": [
+        "Consolidate key concepts and address common errors from the mid-term assessment.",
+        "Learners complete written and practical tasks under standard examination conditions."
+      ],
+      "plenary": "Collect scripts, verify digital file submissions, and conclude the examination session.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Examination question papers",
+        "Marking guide"
+      ],
+      "homework": "Review examination topics and compile revision questions on identified weak areas.",
+      "assessment": "Marked scripts and recorded practical task scores."
     },
     {
-      week: 13, type: "exam", title: "End of Year Examinations", focus: "Weeks 1-12",
-      objectives: ["Complete the end-of-year assessment"],
-      starter: "Examination rules briefing.",
-      development: ["End-of-year written examination", "Practical examination (where applicable)"],
-      plenary: "Collection and review of examination scripts.",
-      resources: ["Question papers", "Answer sheets", "Computer lab"],
-      assessment: "End-of-year exam marks recorded",
-    },
+      "week": 13,
+      "type": "exam",
+      "title": "End of Year Examination",
+      "focus": "Terms 1-3",
+      "objectives": [
+        "Assess learner competences and practical mastery in Form 1 Computer Science",
+        "Identify learning gaps and provide structured feedback"
+      ],
+      "starter": "Explain examination rules, question structure, and practical assessment expectations.",
+      "development": [
+        "Comprehensive assessment covering the full Term 3 syllabus.",
+        "Learners complete written and practical tasks under standard examination conditions."
+      ],
+      "plenary": "Collect scripts, verify digital file submissions, and conclude the examination session.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Examination question papers",
+        "Marking guide"
+      ],
+      "homework": "Review examination topics and compile revision questions on identified weak areas.",
+      "assessment": "Marked scripts and recorded practical task scores."
+    }
   ],
-  'grade-9': [
+  "form-2": [
     {
-      week: 1, type: "lesson", title: "Use Animation Schemes and Custom Animation Animation Schemes and Custom Animation", focus: "9.6.1.1",
-      objectives: ["Use Animation Schemes and Custom Animation Animation Schemes and Custom Animation"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Formatting _.",
-      development: ["Presenting Powerpoint", "Formatting slide shows", "Enhancing slide shows", "Headers & Footers", "Slide Master", "Organization Chart", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Formatting _ in your exercise book.",
-      assessment: "Understanding demonstrated: Use Animation Schemes and Custom Animation Animation Schemes and Custom Animation",
+      "week": 1,
+      "type": "lesson",
+      "title": "Develop Artificial Intelligence models for practical applications",
+      "focus": "2.9.1.1",
+      "objectives": [
+        "Exploring the problems to be solved",
+        "Selecting suitable models",
+        "Designing and Developing the model"
+      ],
+      "starter": "Recall key concepts of AI Models and review previous lesson outcomes.",
+      "development": [
+        "Exploring the problems to be solved",
+        "Selecting suitable models",
+        "Designing and Developing the model",
+        "Evaluating the models",
+        "AI models developed successfully"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of AI Models.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "AI Models"
+      ],
+      "homework": "Complete practical exercises on Develop Artificial Intelligence models for practical applications and submit the lab report.",
+      "assessment": "THINGS Development"
     },
     {
-      week: 2, type: "lesson", title: "Apply Headers &Footers", focus: "9.6.1.2",
-      objectives: ["Apply Headers &Footers"],
-      starter: "Show a real computer part, printout or screenshot related to Formatting _; learners identify what they see.",
-      development: ["Presenting Powerpoint", "Formatting slide shows", "Enhancing slide shows", "Headers & Footers", "Slide Master", "Organization Chart", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Formatting _ in your exercise book.",
-      assessment: "Understanding demonstrated: Apply Headers &Footers",
+      "week": 2,
+      "type": "lesson",
+      "title": "Develop an IoT model for real-world applications",
+      "focus": "2.10.1.1",
+      "objectives": [
+        "Discussing dierent development platforms",
+        "Exploring the user interfaces",
+        "Creating codes for IoTs"
+      ],
+      "starter": "Recall key concepts of IoT Model and review previous lesson outcomes.",
+      "development": [
+        "Discussing dierent development platforms",
+        "Exploring the user interfaces",
+        "Creating codes for IoTs",
+        "Connecting IoT devices using wireless communication protocols like wifi, Bluetooth, Zigbee, or LoRaWAN.",
+        "Building a basic IoT system using sensors, microcontrollers (Arduino, Raspberry Pi), actuators, LEDs",
+        "IoT Model developed accordingly. of Robotics"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of IoT Model.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "IoT Model"
+      ],
+      "homework": "Complete practical exercises on Develop an IoT model for real-world applications and submit the lab report.",
+      "assessment": "Competence demonstrated correctly in laboratory tasks."
     },
     {
-      week: 3, type: "lesson", title: "Work with Slide Master", focus: "9.6.1.3",
-      objectives: ["Work with Slide Master"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for Formatting _.",
-      development: ["Presenting Powerpoint", "Formatting slide shows", "Enhancing slide shows", "Headers & Footers", "Slide Master", "Organization Chart", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Formatting _ in your exercise book.",
-      assessment: "Understanding demonstrated: Work with Slide Master",
+      "week": 3,
+      "type": "lesson",
+      "title": "Design simple robots and control systems",
+      "focus": "2.11.1.1",
+      "objectives": [
+        "Discussing the basic concepts of Robotics Simple Robots correctly designed PAGE 34",
+        "Classifying types of robots",
+        "Identifying the core components of a robot mechanism in robotics"
+      ],
+      "starter": "Recall key concepts of Fundamentals of Robotics and review previous lesson outcomes.",
+      "development": [
+        "Discussing the basic concepts of Robotics Simple Robots correctly designed PAGE 34",
+        "Classifying types of robots",
+        "Identifying the core components of a robot mechanism in robotics",
+        "Designing a basic robotic system considering functionality, form, and purpose PAGE 35"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Fundamentals of Robotics.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Fundamentals of Robotics"
+      ],
+      "homework": "Complete practical exercises on Design simple robots and control systems and submit the lab report.",
+      "assessment": "including ethical use of robots."
     },
     {
-      week: 4, type: "lesson", title: "Insert and Animate Images", focus: "9.6.2.1",
-      objectives: ["Insert and Animate Images"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on PowerPoint.",
-      development: ["Select, Rotate and Flip Objects", "Arrange and Distribute Objects", "Change Object Colours", "Import Images", "Output Format", "Set up a Slide Show", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on PowerPoint in your exercise book.",
-      assessment: "Understanding demonstrated: Insert and Animate Images",
+      "week": 4,
+      "type": "lesson",
+      "title": "Develop Artificial Intelligence models for practical applications",
+      "focus": "2.9.1.1",
+      "objectives": [
+        "Exploring the problems to be solved",
+        "Selecting suitable models",
+        "Designing and Developing the model"
+      ],
+      "starter": "Recall key concepts of AI Models and review previous lesson outcomes.",
+      "development": [
+        "Exploring the problems to be solved",
+        "Selecting suitable models",
+        "Designing and Developing the model",
+        "Evaluating the models",
+        "AI models developed successfully"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of AI Models.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "AI Models"
+      ],
+      "homework": "Complete practical exercises on Develop Artificial Intelligence models for practical applications and submit the lab report.",
+      "assessment": "THINGS Development"
     },
     {
-      week: 5, type: "lesson", title: "Insert a Chart", focus: "9.6.2.2",
-      objectives: ["Insert a Chart"],
-      starter: "Show a real computer part, printout or screenshot related to PowerPoint; learners identify what they see.",
-      development: ["Select, Rotate and Flip Objects", "Arrange and Distribute Objects", "Change Object Colours", "Import Images", "Output Format", "Set up a Slide Show", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on PowerPoint in your exercise book.",
-      assessment: "Understanding demonstrated: Insert a Chart",
+      "week": 5,
+      "type": "lesson",
+      "title": "Develop an IoT model for real-world applications",
+      "focus": "2.10.1.1",
+      "objectives": [
+        "Discussing dierent development platforms",
+        "Exploring the user interfaces",
+        "Creating codes for IoTs"
+      ],
+      "starter": "Recall key concepts of IoT Model and review previous lesson outcomes.",
+      "development": [
+        "Discussing dierent development platforms",
+        "Exploring the user interfaces",
+        "Creating codes for IoTs",
+        "Connecting IoT devices using wireless communication protocols like wifi, Bluetooth, Zigbee, or LoRaWAN.",
+        "Building a basic IoT system using sensors, microcontrollers (Arduino, Raspberry Pi), actuators, LEDs",
+        "IoT Model developed accordingly. of Robotics"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of IoT Model.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "IoT Model"
+      ],
+      "homework": "Complete practical exercises on Develop an IoT model for real-world applications and submit the lab report.",
+      "assessment": "Competence demonstrated correctly in laboratory tasks."
     },
     {
-      week: 6, type: "lesson", title: "Use Drawing Tools and Shapes on Slides", focus: "9.6.2.3",
-      objectives: ["Use Drawing Tools and Shapes on Slides"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for PowerPoint.",
-      development: ["Select, Rotate and Flip Objects", "Arrange and Distribute Objects", "Change Object Colours", "Import Images", "Output Format", "Set up a Slide Show", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on PowerPoint in your exercise book.",
-      assessment: "Understanding demonstrated: Use Drawing Tools and Shapes on Slides",
+      "week": 6,
+      "type": "lesson",
+      "title": "Design simple robots and control systems",
+      "focus": "2.11.1.1",
+      "objectives": [
+        "Discussing the basic concepts of Robotics Simple Robots correctly designed PAGE 34",
+        "Classifying types of robots",
+        "Identifying the core components of a robot mechanism in robotics"
+      ],
+      "starter": "Recall key concepts of Fundamentals of Robotics and review previous lesson outcomes.",
+      "development": [
+        "Discussing the basic concepts of Robotics Simple Robots correctly designed PAGE 34",
+        "Classifying types of robots",
+        "Identifying the core components of a robot mechanism in robotics",
+        "Designing a basic robotic system considering functionality, form, and purpose PAGE 35"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Fundamentals of Robotics.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Fundamentals of Robotics"
+      ],
+      "homework": "Complete practical exercises on Design simple robots and control systems and submit the lab report.",
+      "assessment": "including ethical use of robots."
     },
     {
-      week: 7, type: "exam", title: "Mid-Term Examinations", focus: "Weeks 1-6",
-      objectives: ["Revise Weeks 1-6 content", "Complete the mid-term assessment"],
-      starter: "Revision quiz game covering Weeks 1-6 before the paper.",
-      development: ["Revision of key points from Weeks 1-6", "Mid-term written test (45 min)", "Practical task on the computer"],
-      plenary: "Go over common mistakes from the test.",
-      resources: ["Question papers", "Answer sheets", "Computer lab"],
-      assessment: "Mid-term exam marks recorded",
+      "week": 7,
+      "type": "exam",
+      "title": "Mid-Term Examination",
+      "focus": "Weeks 1-6",
+      "objectives": [
+        "Assess learner competences and practical mastery in Form 2 Computer Science",
+        "Identify learning gaps and provide structured feedback"
+      ],
+      "starter": "Explain examination rules, question structure, and practical assessment expectations.",
+      "development": [
+        "Assess competences taught in Weeks 1 to 6.",
+        "Learners complete written and practical tasks under standard examination conditions."
+      ],
+      "plenary": "Collect scripts, verify digital file submissions, and conclude the examination session.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Examination question papers",
+        "Marking guide"
+      ],
+      "homework": "Review examination topics and compile revision questions on identified weak areas.",
+      "assessment": "Marked scripts and recorded practical task scores."
     },
     {
-      week: 8, type: "lesson", title: "Select, Rotate and Flip Objects", focus: "9.6.2.4",
-      objectives: ["Select, Rotate and Flip Objects"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on PowerPoint.",
-      development: ["Select, Rotate and Flip Objects", "Arrange and Distribute Objects", "Change Object Colours", "Import Images", "Output Format", "Set up a Slide Show", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on PowerPoint in your exercise book.",
-      assessment: "Understanding demonstrated: Select, Rotate and Flip Objects",
+      "week": 8,
+      "type": "lesson",
+      "title": "Develop Artificial Intelligence models for practical applications",
+      "focus": "2.9.1.1",
+      "objectives": [
+        "Exploring the problems to be solved",
+        "Selecting suitable models",
+        "Designing and Developing the model"
+      ],
+      "starter": "Recall key concepts of AI Models and review previous lesson outcomes.",
+      "development": [
+        "Exploring the problems to be solved",
+        "Selecting suitable models",
+        "Designing and Developing the model",
+        "Evaluating the models",
+        "AI models developed successfully"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of AI Models.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "AI Models"
+      ],
+      "homework": "Complete practical exercises on Develop Artificial Intelligence models for practical applications and submit the lab report.",
+      "assessment": "THINGS Development"
     },
     {
-      week: 9, type: "lesson", title: "Arrange and Distribute Objects", focus: "9.6.2.5",
-      objectives: ["Arrange and Distribute Objects"],
-      starter: "Show a real computer part, printout or screenshot related to PowerPoint; learners identify what they see.",
-      development: ["Select, Rotate and Flip Objects", "Arrange and Distribute Objects", "Change Object Colours", "Import Images", "Output Format", "Set up a Slide Show", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on PowerPoint in your exercise book.",
-      assessment: "Understanding demonstrated: Arrange and Distribute Objects",
+      "week": 9,
+      "type": "lesson",
+      "title": "Develop an IoT model for real-world applications",
+      "focus": "2.10.1.1",
+      "objectives": [
+        "Discussing dierent development platforms",
+        "Exploring the user interfaces",
+        "Creating codes for IoTs"
+      ],
+      "starter": "Recall key concepts of IoT Model and review previous lesson outcomes.",
+      "development": [
+        "Discussing dierent development platforms",
+        "Exploring the user interfaces",
+        "Creating codes for IoTs",
+        "Connecting IoT devices using wireless communication protocols like wifi, Bluetooth, Zigbee, or LoRaWAN.",
+        "Building a basic IoT system using sensors, microcontrollers (Arduino, Raspberry Pi), actuators, LEDs",
+        "IoT Model developed accordingly. of Robotics"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of IoT Model.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "IoT Model"
+      ],
+      "homework": "Complete practical exercises on Develop an IoT model for real-world applications and submit the lab report.",
+      "assessment": "Competence demonstrated correctly in laboratory tasks."
     },
     {
-      week: 10, type: "lesson", title: "Change Object Colours", focus: "9.6.2.6",
-      objectives: ["Change Object Colours"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for PowerPoint.",
-      development: ["Select, Rotate and Flip Objects", "Arrange and Distribute Objects", "Change Object Colours", "Import Images", "Output Format", "Set up a Slide Show", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on PowerPoint in your exercise book.",
-      assessment: "Understanding demonstrated: Change Object Colours",
+      "week": 10,
+      "type": "lesson",
+      "title": "Design simple robots and control systems",
+      "focus": "2.11.1.1",
+      "objectives": [
+        "Discussing the basic concepts of Robotics Simple Robots correctly designed PAGE 34",
+        "Classifying types of robots",
+        "Identifying the core components of a robot mechanism in robotics"
+      ],
+      "starter": "Recall key concepts of Fundamentals of Robotics and review previous lesson outcomes.",
+      "development": [
+        "Discussing the basic concepts of Robotics Simple Robots correctly designed PAGE 34",
+        "Classifying types of robots",
+        "Identifying the core components of a robot mechanism in robotics",
+        "Designing a basic robotic system considering functionality, form, and purpose PAGE 35"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Fundamentals of Robotics.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Fundamentals of Robotics"
+      ],
+      "homework": "Complete practical exercises on Design simple robots and control systems and submit the lab report.",
+      "assessment": "including ethical use of robots."
     },
     {
-      week: 11, type: "lesson", title: "Import Images", focus: "9.6.2.7",
-      objectives: ["Import Images"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on PowerPoint.",
-      development: ["Select, Rotate and Flip Objects", "Arrange and Distribute Objects", "Change Object Colours", "Import Images", "Output Format", "Set up a Slide Show", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on PowerPoint in your exercise book.",
-      assessment: "Understanding demonstrated: Import Images",
+      "week": 11,
+      "type": "lesson",
+      "title": "Develop Artificial Intelligence models for practical applications",
+      "focus": "2.9.1.1",
+      "objectives": [
+        "Exploring the problems to be solved",
+        "Selecting suitable models",
+        "Designing and Developing the model"
+      ],
+      "starter": "Recall key concepts of AI Models and review previous lesson outcomes.",
+      "development": [
+        "Exploring the problems to be solved",
+        "Selecting suitable models",
+        "Designing and Developing the model",
+        "Evaluating the models",
+        "AI models developed successfully"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of AI Models.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "AI Models"
+      ],
+      "homework": "Complete practical exercises on Develop Artificial Intelligence models for practical applications and submit the lab report.",
+      "assessment": "THINGS Development"
     },
     {
-      week: 12, type: "revision", title: "Term Revision & Practical", focus: "Weeks 1-11",
-      objectives: ["Consolidate Weeks 1-11 content", "Practise past-style questions"],
-      starter: "Learners list the topics covered this term on the board.",
-      development: ["Concept-map of the term’s topics", "Past-style questions and corrections", "Practical revision task on the computer"],
-      plenary: "Learners identify their weakest topic and how to revise it.",
-      resources: ["Past papers", "Computer lab"],
-      homework: "Revise all term notes for the end-of-year examination.",
-      assessment: "Revision exercise marked",
+      "week": 12,
+      "type": "revision",
+      "title": "Revision & Consolidation",
+      "focus": "Term 3 consolidation",
+      "objectives": [
+        "Assess learner competences and practical mastery in Form 2 Computer Science",
+        "Identify learning gaps and provide structured feedback"
+      ],
+      "starter": "Explain examination rules, question structure, and practical assessment expectations.",
+      "development": [
+        "Consolidate key concepts and address common errors from the mid-term assessment.",
+        "Learners complete written and practical tasks under standard examination conditions."
+      ],
+      "plenary": "Collect scripts, verify digital file submissions, and conclude the examination session.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Examination question papers",
+        "Marking guide"
+      ],
+      "homework": "Review examination topics and compile revision questions on identified weak areas.",
+      "assessment": "Marked scripts and recorded practical task scores."
     },
     {
-      week: 13, type: "exam", title: "End of Year Examinations", focus: "Weeks 1-12",
-      objectives: ["Complete the end-of-year assessment"],
-      starter: "Examination rules briefing.",
-      development: ["End-of-year written examination", "Practical examination (where applicable)"],
-      plenary: "Collection and review of examination scripts.",
-      resources: ["Question papers", "Answer sheets", "Computer lab"],
-      assessment: "End-of-year exam marks recorded",
-    },
+      "week": 13,
+      "type": "exam",
+      "title": "End of Year Examination",
+      "focus": "Terms 1-3",
+      "objectives": [
+        "Assess learner competences and practical mastery in Form 2 Computer Science",
+        "Identify learning gaps and provide structured feedback"
+      ],
+      "starter": "Explain examination rules, question structure, and practical assessment expectations.",
+      "development": [
+        "Comprehensive assessment covering the full Term 3 syllabus.",
+        "Learners complete written and practical tasks under standard examination conditions."
+      ],
+      "plenary": "Collect scripts, verify digital file submissions, and conclude the examination session.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Examination question papers",
+        "Marking guide"
+      ],
+      "homework": "Review examination topics and compile revision questions on identified weak areas.",
+      "assessment": "Marked scripts and recorded practical task scores."
+    }
   ],
-  'grade-10': [
+  "form-3": [
     {
-      week: 1, type: "lesson", title: "Illustrate the general features of a Presentation Package", focus: "10.7.1.1",
-      objectives: ["Illustrate the general features of a Presentation Package"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Introduction to Presentation Packages.",
-      development: ["Features of a Presentation Package", "Various methods of creatingslides", "Adding animations toslides", "Formatting slides", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Introduction to Presentation Packages in your exercise book.",
-      assessment: "Understanding demonstrated: Illustrate the general features of a Presentation Package",
+      "week": 1,
+      "type": "lesson",
+      "title": "Manage databases and integrate with applications",
+      "focus": "3.7.1.1",
+      "objectives": [
+        "Discussing key components of database management",
+        "Configure user roles and permissions to control access to database resources",
+        "Upgrade and migrate databases to newer versions or platforms"
+      ],
+      "starter": "Recall key concepts of Implement and Maintain Databases and review previous lesson outcomes.",
+      "development": [
+        "Discussing key components of database management",
+        "Configure user roles and permissions to control access to database resources",
+        "Upgrade and migrate databases to newer versions or platforms",
+        "Identifying and resolving database querying issues",
+        "Applying the first, second, and third normal forms (1NF, 2NF, 3NF) to organize data.",
+        "Analyzing well-designed and poorly designed database"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Implement and Maintain Databases.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Implement and Maintain Databases"
+      ],
+      "homework": "Complete practical exercises on Manage databases and integrate with applications and submit the lab report.",
+      "assessment": "ARTIFICIAL Models"
     },
     {
-      week: 2, type: "lesson", title: "Demonstrate the various methods of creating slides", focus: "10.7.2.1",
-      objectives: ["Demonstrate the various methods of creating slides"],
-      starter: "Show a real computer part, printout or screenshot related to Creating slides; learners identify what they see.",
-      development: ["Manipulation of presentation packages", "Identification of steps needed tocreate slides", "Discrimination", "Ordering slides", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Creating slides in your exercise book.",
-      assessment: "Understanding demonstrated: Demonstrate the various methods of creating slides",
+      "week": 2,
+      "type": "lesson",
+      "title": "Deploy Artificial Intelligence models in robotics and healthcare",
+      "focus": "3.8.1.1",
+      "objectives": [
+        "Discussing deployment tools",
+        "Training and testing models",
+        "AI models deployed correctly"
+      ],
+      "starter": "Recall key concepts of Deploying AI Models and review previous lesson outcomes.",
+      "development": [
+        "Discussing deployment tools",
+        "Training and testing models",
+        "AI models deployed correctly",
+        "Deploying models",
+        "Monitoring and maintaining models"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Deploying AI Models.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Deploying AI Models"
+      ],
+      "homework": "Complete practical exercises on Deploy Artificial Intelligence models in robotics and healthcare and submit the lab report.",
+      "assessment": "INTELLIG ENCE INTERNET OF THINGS (IOT) Application of Internet of Things (IoT)"
     },
     {
-      week: 3, type: "lesson", title: "Describe the steps in adding animations to slides", focus: "10.7.3.1",
-      objectives: ["Describe the steps in adding animations to slides"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for Adding animations to slides.",
-      development: ["Presentations using presentationpackage", "Problem solving in makingpresentations", "Logical thinking in animatingpresentations", "Productivity", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Adding animations to slides in your exercise book.",
-      assessment: "Understanding demonstrated: Describe the steps in adding animations to slides",
+      "week": 3,
+      "type": "lesson",
+      "title": "Create Internet of Things solutions for real-world problems",
+      "focus": "3.9.1.1",
+      "objectives": [
+        "Developing IoT dashboards to visualize sensor data in real time",
+        "Exploring real-world IoT application (Transportation, education, healthcare, agriculture, smart homes)",
+        "Developing IoT solutions for a chosen sector (Transportation, education, healthcare, agriculture, smart homes)"
+      ],
+      "starter": "Recall key concepts of IoT in the Real World and review previous lesson outcomes.",
+      "development": [
+        "Developing IoT dashboards to visualize sensor data in real time",
+        "Exploring real-world IoT application (Transportation, education, healthcare, agriculture, smart homes)",
+        "Developing IoT solutions for a chosen sector (Transportation, education, healthcare, agriculture, smart homes)",
+        "IoT solutions Created accordingly."
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of IoT in the Real World.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "IoT in the Real World"
+      ],
+      "homework": "Complete practical exercises on Create Internet of Things solutions for real-world problems and submit the lab report.",
+      "assessment": "MOBILE APPLICAT ION Introduction to Mobile Applications"
     },
     {
-      week: 4, type: "lesson", title: "Demonstrate how toformat slides", focus: "10.7.4.1",
-      objectives: ["Demonstrate how toformat slides"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Formatting Slides.",
-      development: ["Accuracy informatting slides", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Formatting Slides in your exercise book.",
-      assessment: "Understanding demonstrated: Demonstrate how toformat slides",
+      "week": 4,
+      "type": "lesson",
+      "title": "Create mobile applications for smartphones and tablets",
+      "focus": "3.10.1.1",
+      "objectives": [
+        "Exploring mobile application and explaining its use in daily life.",
+        "Discussing native, web, and hybrid mobile applications.",
+        "Identifying core features of mobile applications"
+      ],
+      "starter": "Recall key concepts of Mobile Application Development and review previous lesson outcomes.",
+      "development": [
+        "Exploring mobile application and explaining its use in daily life.",
+        "Discussing native, web, and hybrid mobile applications.",
+        "Identifying core features of mobile applications",
+        "Discussing common tools and programming languages used in app development",
+        "Mobile Applications Created Correctly. PAGE 44",
+        "Analyzing common security risks in mobile applications (malware, data breaches ...)."
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Mobile Application Development.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Mobile Application Development"
+      ],
+      "homework": "Complete practical exercises on Create mobile applications for smartphones and tablets and submit the lab report.",
+      "assessment": "Applications. CLOUD COMPUTING Fundamenta ls of Cloud computing"
     },
     {
-      week: 5, type: "lesson", title: "Demonstrate an understanding of computer applications in in a home environment, offices...", focus: "10.8.1.1",
-      objectives: ["Demonstrate an understanding of computer applications in in a home environment, offices, commercial environment communication and information systems,commercial"],
-      starter: "Show a real computer part, printout or screenshot related to Communication in systems; learners identify what they see.",
-      development: ["I dentification of computer applications in homes, officesand commerce", "Interpretation of use of computer systems", "Problem solving in finding a", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Communication in systems in your exercise book.",
-      assessment: "Understanding demonstrated: Demonstrate an understanding of computer applications in in a home environment, offices, commercial environment ",
+      "week": 5,
+      "type": "lesson",
+      "title": "Develop and manage cloud computing models and operations",
+      "focus": "3.11.1.1",
+      "objectives": [
+        "Defining the key concepts of cloud computing",
+        "Discussing the benefits and challenges of cloud computing for business and individuals",
+        "Designing cloud computing models"
+      ],
+      "starter": "Recall key concepts of Cloud Deployment and Operations and review previous lesson outcomes.",
+      "development": [
+        "Defining the key concepts of cloud computing",
+        "Discussing the benefits and challenges of cloud computing for business and individuals",
+        "Designing cloud computing models",
+        "Developing cloud computing models",
+        "Managing three main cloud services using modeling tools such as AWS-EC2, google cloud tool, Microsoft 360, Azure)",
+        "Cloud computing models correctly developed and managed"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Cloud Deployment and Operations.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Cloud Deployment and Operations"
+      ],
+      "homework": "Complete practical exercises on Develop and manage cloud computing models and operations and submit the lab report.",
+      "assessment": "cloud computing models ROBOTICS Mechanical and Electronic Systems"
     },
     {
-      week: 6, type: "lesson", title: "Identify general data processing, industrial, technical and scientific uses.control) an...", focus: "10.8.2.1",
-      objectives: ["Identify general data processing, industrial, technical and scientific uses.control) and in training"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for Information systems in industries.",
-      development: ["Appreciation of communication and informationsystems", "Data processing, industrial, technical and scientific uses. suitable application system for aspecific task", "Application of communication and information systems in a home and workplace.information", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Information systems in industries in your exercise book.",
-      assessment: "Understanding demonstrated: Identify general data processing, industrial, technical and scientific uses.control) and in training",
+      "week": 6,
+      "type": "lesson",
+      "title": "Implement control systems and robotics automation",
+      "focus": "3.12.1.1",
+      "objectives": [
+        "Designing robotic structures using CAD Software.",
+        "Installing and aligning robotic motors and gears",
+        "Setting up power supply systems for robots"
+      ],
+      "starter": "Recall key concepts of Mechanical and Electronic Systems and review previous lesson outcomes.",
+      "development": [
+        "Designing robotic structures using CAD Software.",
+        "Installing and aligning robotic motors and gears",
+        "Setting up power supply systems for robots",
+        "Testing electronic circuits to ensure proper",
+        "Control systems implemented accordingly. PAGE 45",
+        "Writing programs to control movement using languages (python, C++)"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Mechanical and Electronic Systems.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Mechanical and Electronic Systems"
+      ],
+      "homework": "Complete practical exercises on Implement control systems and robotics automation and submit the lab report.",
+      "assessment": "systems functioning of robotic components"
     },
     {
-      week: 7, type: "exam", title: "Mid-Term Examinations", focus: "Weeks 1-6",
-      objectives: ["Revise Weeks 1-6 content", "Complete the mid-term assessment"],
-      starter: "Revision quiz game covering Weeks 1-6 before the paper.",
-      development: ["Revision of key points from Weeks 1-6", "Mid-term written test (45 min)", "Practical task on the computer"],
-      plenary: "Go over common mistakes from the test.",
-      resources: ["Question papers", "Answer sheets", "Computer lab"],
-      assessment: "Mid-term exam marks recorded",
+      "week": 7,
+      "type": "exam",
+      "title": "Mid-Term Examination",
+      "focus": "Weeks 1-6",
+      "objectives": [
+        "Assess learner competences and practical mastery in Form 3 Computer Science",
+        "Identify learning gaps and provide structured feedback"
+      ],
+      "starter": "Explain examination rules, question structure, and practical assessment expectations.",
+      "development": [
+        "Assess competences taught in Weeks 1 to 6.",
+        "Learners complete written and practical tasks under standard examination conditions."
+      ],
+      "plenary": "Collect scripts, verify digital file submissions, and conclude the examination session.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Examination question papers",
+        "Marking guide"
+      ],
+      "homework": "Review examination topics and compile revision questions on identified weak areas.",
+      "assessment": "Marked scripts and recorded practical task scores."
     },
     {
-      week: 8, type: "lesson", title: "Describe security terminologies", focus: "10.9.1.1",
-      objectives: ["Describe security terminologies"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Security terminology.",
-      development: ["Security terminologies", "System Security policystructure", "Resources (Assets) thatrequire security", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Security terminology in your exercise book.",
-      assessment: "Understanding demonstrated: Describe security terminologies",
+      "week": 8,
+      "type": "lesson",
+      "title": "Manage databases and integrate with applications",
+      "focus": "3.7.1.1",
+      "objectives": [
+        "Discussing key components of database management",
+        "Configure user roles and permissions to control access to database resources",
+        "Upgrade and migrate databases to newer versions or platforms"
+      ],
+      "starter": "Recall key concepts of Implement and Maintain Databases and review previous lesson outcomes.",
+      "development": [
+        "Discussing key components of database management",
+        "Configure user roles and permissions to control access to database resources",
+        "Upgrade and migrate databases to newer versions or platforms",
+        "Identifying and resolving database querying issues",
+        "Applying the first, second, and third normal forms (1NF, 2NF, 3NF) to organize data.",
+        "Analyzing well-designed and poorly designed database"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Implement and Maintain Databases.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Implement and Maintain Databases"
+      ],
+      "homework": "Complete practical exercises on Manage databases and integrate with applications and submit the lab report.",
+      "assessment": "ARTIFICIAL Models"
     },
     {
-      week: 9, type: "lesson", title: "Describe the systems security policy structure", focus: "10.9.2.1",
-      objectives: ["Describe the systems security policy structure"],
-      starter: "Show a real computer part, printout or screenshot related to Security layers; learners identify what they see.",
-      development: ["Various security concerns towardsresources", "Computer securityprofessionals", "Responsibilities of computer securitypersonnel", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Security layers in your exercise book.",
-      assessment: "Understanding demonstrated: Describe the systems security policy structure",
+      "week": 9,
+      "type": "lesson",
+      "title": "Deploy Artificial Intelligence models in robotics and healthcare",
+      "focus": "3.8.1.1",
+      "objectives": [
+        "Discussing deployment tools",
+        "Training and testing models",
+        "AI models deployed correctly"
+      ],
+      "starter": "Recall key concepts of Deploying AI Models and review previous lesson outcomes.",
+      "development": [
+        "Discussing deployment tools",
+        "Training and testing models",
+        "AI models deployed correctly",
+        "Deploying models",
+        "Monitoring and maintaining models"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Deploying AI Models.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Deploying AI Models"
+      ],
+      "homework": "Complete practical exercises on Deploy Artificial Intelligence models in robotics and healthcare and submit the lab report.",
+      "assessment": "INTELLIG ENCE INTERNET OF THINGS (IOT) Application of Internet of Things (IoT)"
     },
     {
-      week: 10, type: "lesson", title: "Describe and resolve various security concerns towards resources", focus: "10.9.3.1",
-      objectives: ["Describe and resolve various security concerns towards resources"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for Security Concerns.",
-      development: ["Identification ofsecurity layers", "Comparing and contrastingsecurity layers", "Implementation of securitymeasures", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Security Concerns in your exercise book.",
-      assessment: "Understanding demonstrated: Describe and resolve various security concerns towards resources",
+      "week": 10,
+      "type": "lesson",
+      "title": "Create Internet of Things solutions for real-world problems",
+      "focus": "3.9.1.1",
+      "objectives": [
+        "Developing IoT dashboards to visualize sensor data in real time",
+        "Exploring real-world IoT application (Transportation, education, healthcare, agriculture, smart homes)",
+        "Developing IoT solutions for a chosen sector (Transportation, education, healthcare, agriculture, smart homes)"
+      ],
+      "starter": "Recall key concepts of IoT in the Real World and review previous lesson outcomes.",
+      "development": [
+        "Developing IoT dashboards to visualize sensor data in real time",
+        "Exploring real-world IoT application (Transportation, education, healthcare, agriculture, smart homes)",
+        "Developing IoT solutions for a chosen sector (Transportation, education, healthcare, agriculture, smart homes)",
+        "IoT solutions Created accordingly."
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of IoT in the Real World.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "IoT in the Real World"
+      ],
+      "homework": "Complete practical exercises on Create Internet of Things solutions for real-world problems and submit the lab report.",
+      "assessment": "MOBILE APPLICAT ION Introduction to Mobile Applications"
     },
     {
-      week: 11, type: "lesson", title: "Identify computer security Professionals", focus: "10.9.4.1",
-      objectives: ["Identify computer security Professionals"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Professional Persons involved in security matters.",
-      development: ["Application of security to computers and peripherals", "Appreciation ofsecurity layers", "Awareness of securityprofessionals", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Professional Persons involved in security matters in your exercise book.",
-      assessment: "Understanding demonstrated: Identify computer security Professionals",
+      "week": 11,
+      "type": "lesson",
+      "title": "Create mobile applications for smartphones and tablets",
+      "focus": "3.10.1.1",
+      "objectives": [
+        "Exploring mobile application and explaining its use in daily life.",
+        "Discussing native, web, and hybrid mobile applications.",
+        "Identifying core features of mobile applications"
+      ],
+      "starter": "Recall key concepts of Mobile Application Development and review previous lesson outcomes.",
+      "development": [
+        "Exploring mobile application and explaining its use in daily life.",
+        "Discussing native, web, and hybrid mobile applications.",
+        "Identifying core features of mobile applications",
+        "Discussing common tools and programming languages used in app development",
+        "Mobile Applications Created Correctly. PAGE 44",
+        "Analyzing common security risks in mobile applications (malware, data breaches ...)."
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Mobile Application Development.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Mobile Application Development"
+      ],
+      "homework": "Complete practical exercises on Create mobile applications for smartphones and tablets and submit the lab report.",
+      "assessment": "Applications. CLOUD COMPUTING Fundamenta ls of Cloud computing"
     },
     {
-      week: 12, type: "revision", title: "Term Revision & Practical", focus: "Weeks 1-11",
-      objectives: ["Consolidate Weeks 1-11 content", "Practise past-style questions"],
-      starter: "Learners list the topics covered this term on the board.",
-      development: ["Concept-map of the term’s topics", "Past-style questions and corrections", "Practical revision task on the computer"],
-      plenary: "Learners identify their weakest topic and how to revise it.",
-      resources: ["Past papers", "Computer lab"],
-      homework: "Revise all term notes for the end-of-year examination.",
-      assessment: "Revision exercise marked",
+      "week": 12,
+      "type": "revision",
+      "title": "Revision & Consolidation",
+      "focus": "Term 3 consolidation",
+      "objectives": [
+        "Assess learner competences and practical mastery in Form 3 Computer Science",
+        "Identify learning gaps and provide structured feedback"
+      ],
+      "starter": "Explain examination rules, question structure, and practical assessment expectations.",
+      "development": [
+        "Consolidate key concepts and address common errors from the mid-term assessment.",
+        "Learners complete written and practical tasks under standard examination conditions."
+      ],
+      "plenary": "Collect scripts, verify digital file submissions, and conclude the examination session.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Examination question papers",
+        "Marking guide"
+      ],
+      "homework": "Review examination topics and compile revision questions on identified weak areas.",
+      "assessment": "Marked scripts and recorded practical task scores."
     },
     {
-      week: 13, type: "exam", title: "End of Year Examinations", focus: "Weeks 1-12",
-      objectives: ["Complete the end-of-year assessment"],
-      starter: "Examination rules briefing.",
-      development: ["End-of-year written examination", "Practical examination (where applicable)"],
-      plenary: "Collection and review of examination scripts.",
-      resources: ["Question papers", "Answer sheets", "Computer lab"],
-      assessment: "End-of-year exam marks recorded",
-    },
+      "week": 13,
+      "type": "exam",
+      "title": "End of Year Examination",
+      "focus": "Terms 1-3",
+      "objectives": [
+        "Assess learner competences and practical mastery in Form 3 Computer Science",
+        "Identify learning gaps and provide structured feedback"
+      ],
+      "starter": "Explain examination rules, question structure, and practical assessment expectations.",
+      "development": [
+        "Comprehensive assessment covering the full Term 3 syllabus.",
+        "Learners complete written and practical tasks under standard examination conditions."
+      ],
+      "plenary": "Collect scripts, verify digital file submissions, and conclude the examination session.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Examination question papers",
+        "Marking guide"
+      ],
+      "homework": "Review examination topics and compile revision questions on identified weak areas.",
+      "assessment": "Marked scripts and recorded practical task scores."
+    }
   ],
-  'grade-11': [
+  "form-4": [
     {
-      week: 1, type: "lesson", title: "Describe the use of computers ineducation", focus: "11.7.1.1",
-      objectives: ["Describe the use of computers ineducation"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Education.",
-      development: ["Computers in education (Include: e-learning, e-books, on-line application)", "Application of computers inlibrary systems", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Education in your exercise book.",
-      assessment: "Understanding demonstrated: Describe the use of computers ineducation",
+      "week": 1,
+      "type": "lesson",
+      "title": "Demonstrate understanding of emerging technologies (AR/VR, 3D Printing)",
+      "focus": "4.6.1.1",
+      "objectives": [
+        "Exploring emerging technologies and their role in transforming industries",
+        "Identifying key emerging technologies (AI, IoT, AR, VR)",
+        "Applying Emerging Technologies into industries"
+      ],
+      "starter": "Recall key concepts of Fundamentals of Emerging Technologies and review previous lesson outcomes.",
+      "development": [
+        "Exploring emerging technologies and their role in transforming industries",
+        "Identifying key emerging technologies (AI, IoT, AR, VR)",
+        "Applying Emerging Technologies into industries",
+        "Discussing the potential impact of emerging technologies on society, economy, and daily life.",
+        "Discussing the concept of 3D printing and its role in manufacturing and design.",
+        "Understanding of Emerging Technologies demonstrated"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Fundamentals of Emerging Technologies.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Fundamentals of Emerging Technologies"
+      ],
+      "homework": "Complete practical exercises on Demonstrate understanding of emerging technologies (AR/VR, 3D Printing) and submit the lab report.",
+      "assessment": "understanding of Emerging Technologies appropriately COMPUTING Deployment"
     },
     {
-      week: 2, type: "lesson", title: "Describe the use of computers in health", focus: "11.7.2.1",
-      objectives: ["Describe the use of computers in health"],
-      starter: "Show a real computer part, printout or screenshot related to Health; learners identify what they see.",
-      development: ["Computers in health (Include: medical expert systems, tele-medicine, health research, recordkeeping, medical diagnosis)", "Computers in banking (Include: Electronic fund transfer, automated teller machines, credit cards,online banking)", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Health in your exercise book.",
-      assessment: "Understanding demonstrated: Describe the use of computers in health",
+      "week": 2,
+      "type": "lesson",
+      "title": "Deploy cloud platforms, microservices, and APIs",
+      "focus": "4.7.1.1",
+      "objectives": [
+        "Launching cloud-based application and services including databases, storage and computer resources (DynmoDB, Firestore, Azure)",
+        "Designing cloud-native application using micro services architecture.",
+        "Cloud platforms deployed correctly PAGE 53"
+      ],
+      "starter": "Recall key concepts of Cloud Platforms and Optimization and review previous lesson outcomes.",
+      "development": [
+        "Launching cloud-based application and services including databases, storage and computer resources (DynmoDB, Firestore, Azure)",
+        "Designing cloud-native application using micro services architecture.",
+        "Cloud platforms deployed correctly PAGE 53",
+        "Using APIs for cloud-based services to integrate with other systems",
+        "Integrate cloud services with Internet of Things (IoT) devices for real time data processing.",
+        "Designing and implementing cloud migration strategies PAGE 54"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Cloud Platforms and Optimization.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Cloud Platforms and Optimization"
+      ],
+      "homework": "Complete practical exercises on Deploy cloud platforms, microservices, and APIs and submit the lab report.",
+      "assessment": "Competence demonstrated correctly in laboratory tasks."
     },
     {
-      week: 3, type: "lesson", title: "Describe the use of computers in agricultural", focus: "11.7.3.1",
-      objectives: ["Describe the use of computers in agricultural"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for Agriculture.",
-      development: ["Computers in retailing (Include: electronic point ofsale, stock management.)", "Library systems", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Agriculture in your exercise book.",
-      assessment: "Understanding demonstrated: Describe the use of computers in agricultural",
+      "week": 3,
+      "type": "lesson",
+      "title": "Demonstrate understanding of emerging technologies (AR/VR, 3D Printing)",
+      "focus": "4.6.1.1",
+      "objectives": [
+        "Exploring emerging technologies and their role in transforming industries",
+        "Identifying key emerging technologies (AI, IoT, AR, VR)",
+        "Applying Emerging Technologies into industries"
+      ],
+      "starter": "Recall key concepts of Fundamentals of Emerging Technologies and review previous lesson outcomes.",
+      "development": [
+        "Exploring emerging technologies and their role in transforming industries",
+        "Identifying key emerging technologies (AI, IoT, AR, VR)",
+        "Applying Emerging Technologies into industries",
+        "Discussing the potential impact of emerging technologies on society, economy, and daily life.",
+        "Discussing the concept of 3D printing and its role in manufacturing and design.",
+        "Understanding of Emerging Technologies demonstrated"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Fundamentals of Emerging Technologies.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Fundamentals of Emerging Technologies"
+      ],
+      "homework": "Complete practical exercises on Demonstrate understanding of emerging technologies (AR/VR, 3D Printing) and submit the lab report.",
+      "assessment": "understanding of Emerging Technologies appropriately COMPUTING Deployment"
     },
     {
-      week: 4, type: "lesson", title: "Describe the use of computers in banking", focus: "11.7.4.1",
-      objectives: ["Describe the use of computers in banking"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Banking.",
-      development: ["Office automation", "Define Commercial andgeneral data processing", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Banking in your exercise book.",
-      assessment: "Understanding demonstrated: Describe the use of computers in banking",
+      "week": 4,
+      "type": "lesson",
+      "title": "Deploy cloud platforms, microservices, and APIs",
+      "focus": "4.7.1.1",
+      "objectives": [
+        "Launching cloud-based application and services including databases, storage and computer resources (DynmoDB, Firestore, Azure)",
+        "Designing cloud-native application using micro services architecture.",
+        "Cloud platforms deployed correctly PAGE 53"
+      ],
+      "starter": "Recall key concepts of Cloud Platforms and Optimization and review previous lesson outcomes.",
+      "development": [
+        "Launching cloud-based application and services including databases, storage and computer resources (DynmoDB, Firestore, Azure)",
+        "Designing cloud-native application using micro services architecture.",
+        "Cloud platforms deployed correctly PAGE 53",
+        "Using APIs for cloud-based services to integrate with other systems",
+        "Integrate cloud services with Internet of Things (IoT) devices for real time data processing.",
+        "Designing and implementing cloud migration strategies PAGE 54"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Cloud Platforms and Optimization.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Cloud Platforms and Optimization"
+      ],
+      "homework": "Complete practical exercises on Deploy cloud platforms, microservices, and APIs and submit the lab report.",
+      "assessment": "Competence demonstrated correctly in laboratory tasks."
     },
     {
-      week: 5, type: "lesson", title: "Describe the use of computers in retailing", focus: "11.7.5.1",
-      objectives: ["Describe the use of computers in retailing"],
-      starter: "Show a real computer part, printout or screenshot related to Retailing; learners identify what they see.",
-      development: ["Searching for books using alibrary system", "Researching in commercial and general dataprocessing", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Retailing in your exercise book.",
-      assessment: "Understanding demonstrated: Describe the use of computers in retailing",
+      "week": 5,
+      "type": "lesson",
+      "title": "Demonstrate understanding of emerging technologies (AR/VR, 3D Printing)",
+      "focus": "4.6.1.1",
+      "objectives": [
+        "Exploring emerging technologies and their role in transforming industries",
+        "Identifying key emerging technologies (AI, IoT, AR, VR)",
+        "Applying Emerging Technologies into industries"
+      ],
+      "starter": "Recall key concepts of Fundamentals of Emerging Technologies and review previous lesson outcomes.",
+      "development": [
+        "Exploring emerging technologies and their role in transforming industries",
+        "Identifying key emerging technologies (AI, IoT, AR, VR)",
+        "Applying Emerging Technologies into industries",
+        "Discussing the potential impact of emerging technologies on society, economy, and daily life.",
+        "Discussing the concept of 3D printing and its role in manufacturing and design.",
+        "Understanding of Emerging Technologies demonstrated"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Fundamentals of Emerging Technologies.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Fundamentals of Emerging Technologies"
+      ],
+      "homework": "Complete practical exercises on Demonstrate understanding of emerging technologies (AR/VR, 3D Printing) and submit the lab report.",
+      "assessment": "understanding of Emerging Technologies appropriately COMPUTING Deployment"
     },
     {
-      week: 6, type: "lesson", title: "Describe the use of computers in industry", focus: "11.7.6.1",
-      objectives: ["Describe the use of computers in industry"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for Industry.",
-      development: ["Application of computers inretailing", "Understanding of computer systems in library and retailing.library", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Industry in your exercise book.",
-      assessment: "Understanding demonstrated: Describe the use of computers in industry",
+      "week": 6,
+      "type": "lesson",
+      "title": "Deploy cloud platforms, microservices, and APIs",
+      "focus": "4.7.1.1",
+      "objectives": [
+        "Launching cloud-based application and services including databases, storage and computer resources (DynmoDB, Firestore, Azure)",
+        "Designing cloud-native application using micro services architecture.",
+        "Cloud platforms deployed correctly PAGE 53"
+      ],
+      "starter": "Recall key concepts of Cloud Platforms and Optimization and review previous lesson outcomes.",
+      "development": [
+        "Launching cloud-based application and services including databases, storage and computer resources (DynmoDB, Firestore, Azure)",
+        "Designing cloud-native application using micro services architecture.",
+        "Cloud platforms deployed correctly PAGE 53",
+        "Using APIs for cloud-based services to integrate with other systems",
+        "Integrate cloud services with Internet of Things (IoT) devices for real time data processing.",
+        "Designing and implementing cloud migration strategies PAGE 54"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Cloud Platforms and Optimization.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Cloud Platforms and Optimization"
+      ],
+      "homework": "Complete practical exercises on Deploy cloud platforms, microservices, and APIs and submit the lab report.",
+      "assessment": "Competence demonstrated correctly in laboratory tasks."
     },
     {
-      week: 7, type: "exam", title: "Mid-Term Examinations", focus: "Weeks 1-6",
-      objectives: ["Revise Weeks 1-6 content", "Complete the mid-term assessment"],
-      starter: "Revision quiz game covering Weeks 1-6 before the paper.",
-      development: ["Revision of key points from Weeks 1-6", "Mid-term written test (45 min)", "Practical task on the computer"],
-      plenary: "Go over common mistakes from the test.",
-      resources: ["Question papers", "Answer sheets", "Computer lab"],
-      assessment: "Mid-term exam marks recorded",
+      "week": 7,
+      "type": "exam",
+      "title": "Mid-Term Examination",
+      "focus": "Weeks 1-6",
+      "objectives": [
+        "Assess learner competences and practical mastery in Form 4 Computer Science",
+        "Identify learning gaps and provide structured feedback"
+      ],
+      "starter": "Explain examination rules, question structure, and practical assessment expectations.",
+      "development": [
+        "Assess competences taught in Weeks 1 to 6.",
+        "Learners complete written and practical tasks under standard examination conditions."
+      ],
+      "plenary": "Collect scripts, verify digital file submissions, and conclude the examination session.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Examination question papers",
+        "Marking guide"
+      ],
+      "homework": "Review examination topics and compile revision questions on identified weak areas.",
+      "assessment": "Marked scripts and recorded practical task scores."
     },
     {
-      week: 8, type: "lesson", title: "Describe Library systems", focus: "11.7.7.1",
-      objectives: ["Describe Library systems"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Library systems.",
-      development: ["Awareness of use of computers in alibrary", "Entrepreneurship in tracking of sales using a computer system", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Library systems in your exercise book.",
-      assessment: "Understanding demonstrated: Describe Library systems",
+      "week": 8,
+      "type": "lesson",
+      "title": "Demonstrate understanding of emerging technologies (AR/VR, 3D Printing)",
+      "focus": "4.6.1.1",
+      "objectives": [
+        "Exploring emerging technologies and their role in transforming industries",
+        "Identifying key emerging technologies (AI, IoT, AR, VR)",
+        "Applying Emerging Technologies into industries"
+      ],
+      "starter": "Recall key concepts of Fundamentals of Emerging Technologies and review previous lesson outcomes.",
+      "development": [
+        "Exploring emerging technologies and their role in transforming industries",
+        "Identifying key emerging technologies (AI, IoT, AR, VR)",
+        "Applying Emerging Technologies into industries",
+        "Discussing the potential impact of emerging technologies on society, economy, and daily life.",
+        "Discussing the concept of 3D printing and its role in manufacturing and design.",
+        "Understanding of Emerging Technologies demonstrated"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Fundamentals of Emerging Technologies.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Fundamentals of Emerging Technologies"
+      ],
+      "homework": "Complete practical exercises on Demonstrate understanding of emerging technologies (AR/VR, 3D Printing) and submit the lab report.",
+      "assessment": "understanding of Emerging Technologies appropriately COMPUTING Deployment"
     },
     {
-      week: 9, type: "lesson", title: "Describe the use of computers in transport", focus: "11.7.8.1",
-      objectives: ["Describe the use of computers in transport"],
-      starter: "Show a real computer part, printout or screenshot related to Transport; learners identify what they see.",
-      development: ["Problem solving in a library system andbanking", "Innovativeness in the use of computers in a data processingsystem", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Transport in your exercise book.",
-      assessment: "Understanding demonstrated: Describe the use of computers in transport",
+      "week": 9,
+      "type": "lesson",
+      "title": "Deploy cloud platforms, microservices, and APIs",
+      "focus": "4.7.1.1",
+      "objectives": [
+        "Launching cloud-based application and services including databases, storage and computer resources (DynmoDB, Firestore, Azure)",
+        "Designing cloud-native application using micro services architecture.",
+        "Cloud platforms deployed correctly PAGE 53"
+      ],
+      "starter": "Recall key concepts of Cloud Platforms and Optimization and review previous lesson outcomes.",
+      "development": [
+        "Launching cloud-based application and services including databases, storage and computer resources (DynmoDB, Firestore, Azure)",
+        "Designing cloud-native application using micro services architecture.",
+        "Cloud platforms deployed correctly PAGE 53",
+        "Using APIs for cloud-based services to integrate with other systems",
+        "Integrate cloud services with Internet of Things (IoT) devices for real time data processing.",
+        "Designing and implementing cloud migration strategies PAGE 54"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Cloud Platforms and Optimization.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Cloud Platforms and Optimization"
+      ],
+      "homework": "Complete practical exercises on Deploy cloud platforms, microservices, and APIs and submit the lab report.",
+      "assessment": "Competence demonstrated correctly in laboratory tasks."
     },
     {
-      week: 10, type: "lesson", title: "Identify Office automation", focus: "11.7.9.1",
-      objectives: ["Identify Office automation"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for Office automation.",
-      development: ["Discuss and demonstrate: Identify Office automation", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Office automation in your exercise book.",
-      assessment: "Understanding demonstrated: Identify Office automation",
+      "week": 10,
+      "type": "lesson",
+      "title": "Demonstrate understanding of emerging technologies (AR/VR, 3D Printing)",
+      "focus": "4.6.1.1",
+      "objectives": [
+        "Exploring emerging technologies and their role in transforming industries",
+        "Identifying key emerging technologies (AI, IoT, AR, VR)",
+        "Applying Emerging Technologies into industries"
+      ],
+      "starter": "Recall key concepts of Fundamentals of Emerging Technologies and review previous lesson outcomes.",
+      "development": [
+        "Exploring emerging technologies and their role in transforming industries",
+        "Identifying key emerging technologies (AI, IoT, AR, VR)",
+        "Applying Emerging Technologies into industries",
+        "Discussing the potential impact of emerging technologies on society, economy, and daily life.",
+        "Discussing the concept of 3D printing and its role in manufacturing and design.",
+        "Understanding of Emerging Technologies demonstrated"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Fundamentals of Emerging Technologies.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Fundamentals of Emerging Technologies"
+      ],
+      "homework": "Complete practical exercises on Demonstrate understanding of emerging technologies (AR/VR, 3D Printing) and submit the lab report.",
+      "assessment": "understanding of Emerging Technologies appropriately COMPUTING Deployment"
     },
     {
-      week: 11, type: "lesson", title: "Define Commercial and general dataprocessing", focus: "11.7.10.1",
-      objectives: ["Define Commercial and general dataprocessing"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Commercial and general data processing.",
-      development: ["Discuss and demonstrate: Define Commercial and general dataprocessing", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Commercial and general data processing in your exercise book.",
-      assessment: "Understanding demonstrated: Define Commercial and general dataprocessing",
+      "week": 11,
+      "type": "lesson",
+      "title": "Deploy cloud platforms, microservices, and APIs",
+      "focus": "4.7.1.1",
+      "objectives": [
+        "Launching cloud-based application and services including databases, storage and computer resources (DynmoDB, Firestore, Azure)",
+        "Designing cloud-native application using micro services architecture.",
+        "Cloud platforms deployed correctly PAGE 53"
+      ],
+      "starter": "Recall key concepts of Cloud Platforms and Optimization and review previous lesson outcomes.",
+      "development": [
+        "Launching cloud-based application and services including databases, storage and computer resources (DynmoDB, Firestore, Azure)",
+        "Designing cloud-native application using micro services architecture.",
+        "Cloud platforms deployed correctly PAGE 53",
+        "Using APIs for cloud-based services to integrate with other systems",
+        "Integrate cloud services with Internet of Things (IoT) devices for real time data processing.",
+        "Designing and implementing cloud migration strategies PAGE 54"
+      ],
+      "plenary": "Learners present their laboratory outputs and summarize the core principles of Cloud Platforms and Optimization.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Cloud Platforms and Optimization"
+      ],
+      "homework": "Complete practical exercises on Deploy cloud platforms, microservices, and APIs and submit the lab report.",
+      "assessment": "Competence demonstrated correctly in laboratory tasks."
     },
     {
-      week: 12, type: "revision", title: "Term Revision & Practical", focus: "Weeks 1-11",
-      objectives: ["Consolidate Weeks 1-11 content", "Practise past-style questions"],
-      starter: "Learners list the topics covered this term on the board.",
-      development: ["Concept-map of the term’s topics", "Past-style questions and corrections", "Practical revision task on the computer"],
-      plenary: "Learners identify their weakest topic and how to revise it.",
-      resources: ["Past papers", "Computer lab"],
-      homework: "Revise all term notes for the end-of-year examination.",
-      assessment: "Revision exercise marked",
+      "week": 12,
+      "type": "revision",
+      "title": "Revision & Consolidation",
+      "focus": "Term 3 consolidation",
+      "objectives": [
+        "Assess learner competences and practical mastery in Form 4 Computer Science",
+        "Identify learning gaps and provide structured feedback"
+      ],
+      "starter": "Explain examination rules, question structure, and practical assessment expectations.",
+      "development": [
+        "Consolidate key concepts and address common errors from the mid-term assessment.",
+        "Learners complete written and practical tasks under standard examination conditions."
+      ],
+      "plenary": "Collect scripts, verify digital file submissions, and conclude the examination session.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Examination question papers",
+        "Marking guide"
+      ],
+      "homework": "Review examination topics and compile revision questions on identified weak areas.",
+      "assessment": "Marked scripts and recorded practical task scores."
     },
     {
-      week: 13, type: "exam", title: "End of Year Examinations", focus: "Weeks 1-12",
-      objectives: ["Complete the end-of-year assessment"],
-      starter: "Examination rules briefing.",
-      development: ["End-of-year written examination", "Practical examination (where applicable)"],
-      plenary: "Collection and review of examination scripts.",
-      resources: ["Question papers", "Answer sheets", "Computer lab"],
-      assessment: "End-of-year exam marks recorded",
-    },
-  ],
-  'grade-12': [
-    {
-      week: 1, type: "lesson", title: "Describe concepts of Batch processing systems", focus: "12.5.1.1",
-      objectives: ["Describe concepts of Batch processing systems"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Batch processing systems.",
-      development: ["Batch processing systems", "Interactive systems", "Network systems", "Control systems", "Automated systems", "Multimedia systems andapplications", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Batch processing systems in your exercise book.",
-      assessment: "Understanding demonstrated: Describe concepts of Batch processing systems",
-    },
-    {
-      week: 2, type: "lesson", title: "Describe Interactive systems", focus: "12.5.2.1",
-      objectives: ["Describe Interactive systems"],
-      starter: "Show a real computer part, printout or screenshot related to Interactive systems; learners identify what they see.",
-      development: ["Describe design", "Explain top down design and usestructure diagrams as tools", "Describe appropriate testing strategiesand choose suitable data for testing", "State items that should be included intechnical and use documentation", "Justify the choice of a method ofchangeover", "Describe how a system should beevaluated", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Interactive systems in your exercise book.",
-      assessment: "Understanding demonstrated: Describe Interactive systems",
-    },
-    {
-      week: 3, type: "lesson", title: "Demonstrate Network systems", focus: "12.5.3.1",
-      objectives: ["Demonstrate Network systems"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for Network systems.",
-      development: ["Illustrate the concept of Programming languages", "Identify program structure", "Identify programming reserved words in a Programming language ( Include: Reserved words in Pascal and C++, and Python)", "Identify Pre-defined Data Types", "Create User Defined Datatypes", "Declare the variables", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Network systems in your exercise book.",
-      assessment: "Understanding demonstrated: Demonstrate Network systems",
-    },
-    {
-      week: 4, type: "lesson", title: "Describe Control systems", focus: "12.5.4.1",
-      objectives: ["Describe Control systems"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Control systems.",
-      development: ["v TOPIC SPECIFIC OUTCOMESGRADE 10 GRADE 11 GRADE 12", "Describe the terms fordata storage/capacity", "Explain the number systems and their representation ofintegral values", "Demonstrate binary addition and subtraction andtheir use in computing", "Explain data processingcycle", "Demonstrate data protectionlegislation", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Control systems in your exercise book.",
-      assessment: "Understanding demonstrated: Describe Control systems",
-    },
-    {
-      week: 5, type: "lesson", title: "Describe Automated systems", focus: "12.5.5.1",
-      objectives: ["Describe Automated systems"],
-      starter: "Show a real computer part, printout or screenshot related to Automated systems; learners identify what they see.",
-      development: ["Comprehensively write a computer system Report (Relate it to stages of asystem analysis and design)", "Demonstrate System Product", "Hardware of the computer system", "Investigate different types ofinput devices", "Demonstrate usage of eachinput device", "Describe the elements ofinput stage", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Automated systems in your exercise book.",
-      assessment: "Understanding demonstrated: Describe Automated systems",
-    },
-    {
-      week: 6, type: "lesson", title: "Demonstrate Multimedia systemsand their applications", focus: "12.5.6.1",
-      objectives: ["Demonstrate Multimedia systemsand their applications"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for Multimedia systems and applications.",
-      development: ["Describe the steps in addinganimations to slides", "Demonstrate how to formatslides", "Specific computer applications", "Describe the use of computersin education", "Describe the use of computersin health", "Describe the use of computersin banking", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Multimedia systems and applications in your exercise book.",
-      assessment: "Understanding demonstrated: Demonstrate Multimedia systemsand their applications",
-    },
-    {
-      week: 7, type: "exam", title: "Mid-Term Examinations", focus: "Weeks 1-6",
-      objectives: ["Revise Weeks 1-6 content", "Complete the mid-term assessment"],
-      starter: "Revision quiz game covering Weeks 1-6 before the paper.",
-      development: ["Revision of key points from Weeks 1-6", "Mid-term written test (45 min)", "Practical task on the computer"],
-      plenary: "Go over common mistakes from the test.",
-      resources: ["Question papers", "Answer sheets", "Computer lab"],
-      assessment: "Mid-term exam marks recorded",
-    },
-    {
-      week: 8, type: "lesson", title: "Describe concepts of Batch processing systems (cont.)", focus: "12.5.1.1",
-      objectives: ["Describe concepts of Batch processing systems"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Batch processing systems.",
-      development: ["Batch processing systems", "Interactive systems", "Network systems", "Control systems", "Automated systems", "Multimedia systems andapplications", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Batch processing systems in your exercise book.",
-      assessment: "Understanding demonstrated: Describe concepts of Batch processing systems",
-    },
-    {
-      week: 9, type: "lesson", title: "Describe Interactive systems (cont.)", focus: "12.5.2.1",
-      objectives: ["Describe Interactive systems"],
-      starter: "Show a real computer part, printout or screenshot related to Interactive systems; learners identify what they see.",
-      development: ["Describe design", "Explain top down design and usestructure diagrams as tools", "Describe appropriate testing strategiesand choose suitable data for testing", "State items that should be included intechnical and use documentation", "Justify the choice of a method ofchangeover", "Describe how a system should beevaluated", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Interactive systems in your exercise book.",
-      assessment: "Understanding demonstrated: Describe Interactive systems",
-    },
-    {
-      week: 10, type: "lesson", title: "Demonstrate Network systems (cont.)", focus: "12.5.3.1",
-      objectives: ["Demonstrate Network systems"],
-      starter: "Two-question quick quiz on the previous lesson, then set the scene for Network systems.",
-      development: ["Illustrate the concept of Programming languages", "Identify program structure", "Identify programming reserved words in a Programming language ( Include: Reserved words in Pascal and C++, and Python)", "Identify Pre-defined Data Types", "Create User Defined Datatypes", "Declare the variables", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Network systems in your exercise book.",
-      assessment: "Understanding demonstrated: Demonstrate Network systems",
-    },
-    {
-      week: 11, type: "lesson", title: "Describe Control systems (cont.)", focus: "12.5.4.1",
-      objectives: ["Describe Control systems"],
-      starter: "Oral recap: \"What did we learn last week?\" then introduce today's focus on Control systems.",
-      development: ["v TOPIC SPECIFIC OUTCOMESGRADE 10 GRADE 11 GRADE 12", "Describe the terms fordata storage/capacity", "Explain the number systems and their representation ofintegral values", "Demonstrate binary addition and subtraction andtheir use in computing", "Explain data processingcycle", "Demonstrate data protectionlegislation", "Guided practice: learners complete the task on the computer with teacher support"],
-      plenary: "Learners summarise the key points and note one question they still have.",
-      resources: ["Computer lab", "Projector / large display", "Whiteboard & markers", "Textbook / handouts"],
-      homework: "Answer the textbook/notes questions on Control systems in your exercise book.",
-      assessment: "Understanding demonstrated: Describe Control systems",
-    },
-    {
-      week: 12, type: "revision", title: "Term Revision & Practical", focus: "Weeks 1-11",
-      objectives: ["Consolidate Weeks 1-11 content", "Practise past-style questions"],
-      starter: "Learners list the topics covered this term on the board.",
-      development: ["Concept-map of the term’s topics", "Past-style questions and corrections", "Practical revision task on the computer"],
-      plenary: "Learners identify their weakest topic and how to revise it.",
-      resources: ["Past papers", "Computer lab"],
-      homework: "Revise all term notes for the end-of-year examination.",
-      assessment: "Revision exercise marked",
-    },
-    {
-      week: 13, type: "exam", title: "End of Year Examinations", focus: "Weeks 1-12",
-      objectives: ["Complete the end-of-year assessment"],
-      starter: "Examination rules briefing.",
-      development: ["End-of-year written examination", "Practical examination (where applicable)"],
-      plenary: "Collection and review of examination scripts.",
-      resources: ["Question papers", "Answer sheets", "Computer lab"],
-      assessment: "End-of-year exam marks recorded",
-    },
-  ],
+      "week": 13,
+      "type": "exam",
+      "title": "End of Year Examination",
+      "focus": "Terms 1-3",
+      "objectives": [
+        "Assess learner competences and practical mastery in Form 4 Computer Science",
+        "Identify learning gaps and provide structured feedback"
+      ],
+      "starter": "Explain examination rules, question structure, and practical assessment expectations.",
+      "development": [
+        "Comprehensive assessment covering the full Term 3 syllabus.",
+        "Learners complete written and practical tasks under standard examination conditions."
+      ],
+      "plenary": "Collect scripts, verify digital file submissions, and conclude the examination session.",
+      "resources": [
+        "Computer Laboratory",
+        "Laptops / Desktop PCs",
+        "Software IDEs / Tools",
+        "Whiteboard & Markers",
+        "Examination question papers",
+        "Marking guide"
+      ],
+      "homework": "Review examination topics and compile revision questions on identified weak areas.",
+      "assessment": "Marked scripts and recorded practical task scores."
+    }
+  ]
 };

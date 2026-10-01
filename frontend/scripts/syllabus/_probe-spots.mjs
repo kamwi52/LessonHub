@@ -26,7 +26,7 @@ dump('computer-science-o-level-2024', /Cyber Threats and Mitigation/, 0, 10);
 dump('biology-o-level', /3ULQFLSOHV OF/, 0, 6);
 dump('chemistry-o-level', /Mineral Ores/, 2, 12);
 dump('physics-o-level', /2\.1\.2 Linear/, 0, 10);
-dump('integrated-science-o-level', /1\.1\.1\.1 Demonstrate/, 2, 12);
+dump('civic-education-o-level', /1\.1\.1\.1 Demonstrate/, 2, 12);
 
 writeFileSync(join(textDir, '_raw-spots.md'), out.join('\n'), 'utf8');
 console.log('written');

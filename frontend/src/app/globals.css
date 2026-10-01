@@ -146,6 +146,12 @@ textarea {
   100% { content: '...'; }
 }
 
+/* Ruled area at the foot of a lesson plan — the teacher writes remarks on the sheet. */
+.doc-notes {
+  display: flex;
+  flex-direction: column;
+}
+
 /* ===== Print styles (schemes of work, lesson plans & topic pages) ===== */
 .hidden-on-filter { display: none; }
 @media print {
@@ -162,7 +168,15 @@ textarea {
      the components (`.doc-table`, `.doc-h1`, …), not here.
      ------------------------------------------------------------------ */
   .print-shell aside,
+  .print-shell header,
   .print-shell .no-print {
+    display: none !important;
+  }
+
+  /* On-screen filters must survive printing: `.print-doc { display: flex }`
+     further down would otherwise beat `.hidden-on-filter { display: none }`
+     (same specificity, later rule) and print weeks the teacher filtered out. */
+  .hidden-on-filter {
     display: none !important;
   }
 
@@ -174,16 +188,46 @@ textarea {
     padding: 0 !important;
   }
 
+  /* The page wrapper adds screen padding around the document; printing starts at
+     the paper margin instead, so the school name sits close to the top edge. */
+  .print-main > div {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
   body {
     background: white !important;
   }
 
   .print-doc {
     font-size: 10pt;
+    /* One lesson plan per sheet: drop the on-screen card chrome and the `space-y-5`
+       list margin, keep the card padding out of the paper margin, and give the sheet
+       a minimum height so a short plan still fills the page. */
+    display: flex;
+    flex-direction: column;
+    min-height: 170mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .print-doc .doc-notes {
+    flex: 1;
   }
 
   .page-break {
     page-break-after: always;
+  }
+
+  /* Chrome emits an extra BLANK sheet when the very last block carries
+     page-break-after: always (26 plans printed as 27 pages). The final plan on
+     the run must not force a break after itself. */
+  .page-break:last-of-type,
+  .page-break:last-child {
+    page-break-after: auto;
   }
 
   /* Single-lesson printing without unmounting: when the click handler tags the

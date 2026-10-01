@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { textDir } from './paths.mjs';
 
 const out = [];
-for (const slug of ['biology-o-level', 'chemistry-o-level', 'integrated-science-o-level']) {
+for (const slug of ['biology-o-level', 'chemistry-o-level', 'civic-education-o-level']) {
   const text = readFileSync(join(textDir, `${slug}.txt`), 'utf8');
   const esc = (s) => JSON.stringify(s);
   // Distribution of characters that lead a line, excluding plain letters/spaces.

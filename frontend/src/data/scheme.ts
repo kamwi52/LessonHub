@@ -2,7 +2,9 @@
 import type { GradePlan, TermPlan, Topic, WeekPlan } from './ict-curriculum';
 import { DEFAULT_SUBJECT_ID, getSubject, getSubjectGrade, getSubjectTerm3 } from './subjects';
 
-export const SCHOOL_NAME = 'LINDA SECONDARY SCHOOL';
+export const MINISTRY_NAME = 'MINISTRY OF EDUCATION';
+export const DEFAULT_SCHOOL_NAME = 'LINDA SECONDARY SCHOOL';
+export const SCHOOL_NAME = DEFAULT_SCHOOL_NAME;
 
 // Linda-format documents: every subject is timetabled as two 80-minute lessons
 // per week, so one weekly plan prints as two lesson plans (Lesson 1 of 2, …).
@@ -149,6 +151,8 @@ export interface LessonPlanDoc {
   duration: string;
   objectives: string;
   aids: string;
+  /** Syllabus unit the week's focus code resolves to, printed as the syllabus reference. */
+  unit: string;
   rows: PlanTable[];
 }
 
@@ -156,6 +160,21 @@ interface PlanHeader {
   topic: string;
   subtopic: string;
   aids: string;
+  /** Syllabus unit behind the week's focus code, e.g. '1.4.1.1 Define the internet'. */
+  unit: string;
+}
+
+/** The week before (`step = -1`) or after (`step = 1`) this one inside the same term. */
+function neighbourWeek(
+  subjectId: string,
+  gradeId: string,
+  termId: string,
+  w: WeekPlan,
+  step: number,
+): WeekPlan | undefined {
+  const weeks = getGradeById(subjectId, gradeId)?.terms.find((t) => t.id === termId)?.weekPlans ?? [];
+  const index = weeks.findIndex((week) => week.week === w.week);
+  return index < 0 ? undefined : weeks[index + step];
 }
 
 /** Resolve the topic / subtopic / resources printed at the top of a week's plan. */
@@ -165,14 +184,18 @@ function planHeader(subjectId: string, gradeId: string, termId: string, w: WeekP
   const parts = codeSegments(firstRef);
   let topic = 'Revision / Examination';
   let subtopic = w.title;
+  let unit = `${w.focus} ${w.title}`.trim();
   if (parts.length >= 2 && term) {
     const t = matchTopic(term.topics, parts);
     if (t) {
       topic = `${t.id.split('-').slice(0, 2).join('.')} ${t.overview.split(' - ')[0]}`;
       subtopic = `${t.id.replace(/-/g, '.')} ${t.title}`;
+      // The syllabus' own unit for this focus code — printed as the syllabus reference.
+      const lesson = t.lessons.find((l) => l.id === parts.join('-'));
+      if (lesson?.title) unit = `${parts.join('.')} ${lesson.title}`;
     }
   }
-  return { topic, subtopic, aids: w.resources.join(', ') };
+  return { topic, subtopic, aids: w.resources.join(', '), unit };
 }
 
 /** Build ONE Linda-format lesson plan covering a whole week (single-lesson view). */
@@ -185,11 +208,14 @@ export function buildLessonPlan(
 ): LessonPlanDoc {
   const head = planHeader(subjectId, gradeId, termId, w);
   const aids = head.aids;
+  // The week's own lesson material is already in the data: set induction, objectives,
+  // development steps, plenary and homework. Print all of it rather than a summary.
+  const standard = w.assessment?.trim() ? [`Expected standard: ${w.assessment.trim()}`] : [];
   const rows: PlanTable[] = [
     {
       part: 'Intro',
       time: '10 min',
-      content: [w.starter, ...w.objectives.map((o) => `Objective: ${o}`)],
+      content: [`Set induction: ${w.starter}`, ...w.objectives.map((o) => `Objective: ${o}`)],
       methodology: 'QPN',
       learner: 'Answering questions',
       refAids: 'Projector, Chalkboard, Internet',
@@ -197,7 +223,7 @@ export function buildLessonPlan(
     {
       part: 'Dev',
       time: '40 min',
-      content: w.development,
+      content: [...w.development, `Competence: ${head.unit}`, `Key concept: ${head.subtopic}`],
       methodology: 'Demonstration, Lecture, Q/A',
       learner: 'Answering questions and asking questions',
       refAids: aids,
@@ -211,6 +237,7 @@ export function buildLessonPlan(
           : w.type === 'exam'
             ? 'Exam task under timed conditions'
             : 'Practical exercise applying the lesson content on the computer',
+        ...standard,
       ],
       methodology: w.type === 'exam' ? 'Exam supervision' : 'Using the computer',
       learner: 'Answering questions and consultation',
@@ -219,7 +246,7 @@ export function buildLessonPlan(
     {
       part: 'Con',
       time: '10 min',
-      content: [w.plenary],
+      content: [w.plenary, ...standard],
       methodology: 'Lecture, Q/A',
       learner: 'Answering and asking questions',
       refAids: '',
@@ -237,6 +264,7 @@ export function buildLessonPlan(
     duration: LESSON_DURATION,
     objectives: 'PSBAT ' + w.objectives.join('; '),
     aids,
+    unit: head.unit,
     rows,
   };
 }
@@ -276,14 +304,31 @@ export function buildWeekLessonPlans(
       ? 'Exam task under timed conditions'
       : 'Practical exercise applying the lesson content on the computer';
   const applicationMethod = w.type === 'exam' ? 'Exam supervision' : 'Using the computer';
+  // Everything below already exists in the week's planner: the expected standard and
+  // the neighbouring weeks. Reused here so each printed lesson carries the detail a
+  // full-page plan needs without inventing new lesson content.
+  const standard = w.assessment?.trim() ? [`Expected standard: ${w.assessment.trim()}`] : [];
+  const previous = neighbourWeek(subjectId, gradeId, termId, w, -1);
+  const next = neighbourWeek(subjectId, gradeId, termId, w, 1);
+  const linkBack = previous
+    ? [`Previous knowledge: Week ${previous.week} — ${previous.title}`]
+    : [];
+  const linkForward = next ? [`Next lesson: Week ${next.week} — ${next.title}`] : [];
 
   const rowsFor = (lesson: number): PlanTable[] => [
     {
       part: 'Intro',
       time: '10 min',
       content: lesson === 1
-        ? [w.starter, ...objectives1.map((o) => `Objective: ${o}`)]
-        : ['Recap Lesson 1: learners state the key points covered.', ...objectives2.map((o) => `Objective: ${o}`)],
+        ? [
+            `Set induction: ${w.starter}`,
+            ...objectives1.map((o) => `Objective: ${o}`),
+            ...linkBack,
+          ]
+        : [
+            `Recap Lesson 1: learners state the key points covered — ${objectives1.join('; ')}`,
+            ...objectives2.map((o) => `Objective: ${o}`),
+          ],
       methodology: 'QPN',
       learner: 'Answering questions',
       refAids: 'Projector, Chalkboard, Internet',
@@ -291,7 +336,11 @@ export function buildWeekLessonPlans(
     {
       part: 'Dev',
       time: '40 min',
-      content: lesson === 1 ? development1 : development2,
+      content: [
+        ...(lesson === 1 ? development1 : development2),
+        `Competence: ${head.unit}`,
+        `Key concept: ${head.subtopic}`,
+      ],
       methodology: 'Demonstration, Lecture, Q/A',
       learner: 'Answering questions and asking questions',
       refAids: head.aids,
@@ -299,7 +348,7 @@ export function buildWeekLessonPlans(
     {
       part: 'App',
       time: '20 min',
-      content: lesson === 1 ? [`Guided practice: ${guidedPractice}`] : [application],
+      content: lesson === 1 ? [`Guided practice: ${guidedPractice}`] : [application, ...standard],
       methodology: applicationMethod,
       learner: 'Answering questions and consultation',
       refAids: head.aids,
@@ -308,8 +357,8 @@ export function buildWeekLessonPlans(
       part: 'Con',
       time: '10 min',
       content: lesson === 1
-        ? ['Checkpoint: learners state one thing they have learnt in Lesson 1.']
-        : [w.plenary],
+        ? ['Checkpoint: learners state one thing they have learnt in Lesson 1.', ...standard]
+        : [w.plenary, ...standard, ...linkForward],
       methodology: 'Lecture, Q/A',
       learner: 'Answering and asking questions',
       refAids: '',
@@ -330,6 +379,7 @@ export function buildWeekLessonPlans(
       duration: LESSON_DURATION,
       objectives: 'PSBAT ' + (lesson === 1 ? objectives1 : objectives2).join('; '),
       aids: head.aids,
+      unit: head.unit,
       rows: rowsFor(lesson),
     };
   });

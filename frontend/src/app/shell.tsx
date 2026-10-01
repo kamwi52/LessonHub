@@ -231,7 +231,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
 function MobileBar({ showBack, onMenu, onBack }: { showBack: boolean; onMenu: () => void; onBack: () => void }) {
   return (
-    <header className="md:hidden flex items-center justify-between h-14 px-4 shrink-0 bg-[#0d1730] text-white border-b border-white/10">
+    <header className="no-print md:hidden flex items-center justify-between h-14 px-4 shrink-0 bg-[#0d1730] text-white border-b border-white/10">
       <button
         type="button"
         onClick={onMenu}

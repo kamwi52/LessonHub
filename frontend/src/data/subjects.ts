@@ -10,6 +10,8 @@ import { MATH_CURRICULUM } from './math-curriculum';
 import { MATH_TERM3_WEEKS } from './math-t3-weeks';
 import { COMPUTER_STUDIES } from './syllabus-computer-studies';
 import { CS_TERM3_WEEKS } from './cs-t3-weeks';
+import { CIVIC_EDUCATION_CURRICULUM } from './syllabus-civic-education';
+import { CIVIC_EDUCATION_TERM3_WEEKS } from './civic-education-t3-weeks';
 import { BIOLOGY_CURRICULUM } from './syllabus-biology';
 import { BIOLOGY_TERM3_WEEKS } from './biology-t3-weeks';
 import { CHEMISTRY_CURRICULUM } from './syllabus-chemistry';
@@ -30,6 +32,11 @@ for (const g of MATH_CURRICULUM) {
 }
 for (const g of COMPUTER_STUDIES) {
   const weeks = CS_TERM3_WEEKS[g.id];
+  const t3 = g.terms.find((t) => t.id.endsWith('-t3'));
+  if (weeks && t3) { t3.weekPlans = weeks; t3.weeks = 13; }
+}
+for (const g of CIVIC_EDUCATION_CURRICULUM) {
+  const weeks = CIVIC_EDUCATION_TERM3_WEEKS[g.id];
   const t3 = g.terms.find((t) => t.id.endsWith('-t3'));
   if (weeks && t3) { t3.weekPlans = weeks; t3.weeks = 13; }
 }
@@ -147,20 +154,38 @@ export const SUBJECTS: SubjectEntry[] = [
   },
   {
     id: 'computer-studies',
-    name: 'Computer Studies',
+    name: 'Computer Science',
     shortCode: 'CS',
     icon: '🖥️',
     color: 'violet',
     description:
-      'Hardware, Operating Systems, Networking, Productivity Tools, and Multimedia — CDC Syllabus (Grades 8-12).',
-    grades: ['Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12'],
-    levels: ['Junior Secondary', 'Senior Secondary'],
+      'Computer science fundamentals, programming, databases, networks, cybersecurity, emerging technologies and multimedia — CDC Ordinary Level syllabus (Forms 1-4).',
+    grades: ['Form 1', 'Form 2', 'Form 3', 'Form 4'],
+    levels: ['Ordinary Level'],
     term3Weeks: CS_TERM3_WEEKS,
     curriculum: COMPUTER_STUDIES,
     status: 'ready',
     featured: true,
-    syllabusRef: 'CDC Computer Studies Syllabus, Grades 8-12',
-    lessonRef: "CDC Computer Studies Syllabus Grades 8-12; Digital Resources",
+    syllabusRef: 'CDC Ordinary Level Computer Science Syllabus, Forms 1-4',
+    lessonRef: 'CDC O-Level Computer Science Syllabus Forms 1-4; Digital Resources',
+  },
+  {
+    id: 'civic-education',
+    name: 'Civic Education',
+    shortCode: 'CIV',
+    icon: '🏛️',
+    color: 'purple',
+    description:
+      'Citizenship, governance, the Constitution, human rights, peace and conflict, personal finance and entrepreneurship — CDC O Level syllabus (Forms 1-4).',
+    grades: ['Form 1', 'Form 2', 'Form 3', 'Form 4'],
+    levels: ['Ordinary Level'],
+    term3Weeks: CIVIC_EDUCATION_TERM3_WEEKS,
+    curriculum: CIVIC_EDUCATION_CURRICULUM,
+    status: 'ready',
+    featured: true,
+    syllabusRef: 'CDC Ordinary Level Civic Education Syllabus, Forms 1-4',
+    lessonRef:
+      'CDC O-Level Civic Education Syllabus Forms 1-4; Constitution of Zambia, Pupil Reference Notes & Newspaper Cuttings',
   },
 ];
 
